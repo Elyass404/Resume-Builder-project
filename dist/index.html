@@ -1,12 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
+
 <body>
-    <h1 class="bg-green-700">Hello world of tailwind</h1>
+
+
+    <div class="isolate bg-white px-6 py-24 sm:py-32 lg:px-8 ">
+        <div class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
+            aria-hidden="true">
+            <div class="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
+                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+            </div>
+        </div>
+        <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">Contact sales</h2>
+            <p class="mt-2 text-lg/8 text-gray-600">Aute magna irure deserunt veniam aliqua magna enim voluptate.</p>
+        </div>
+
+        <div class="mx-auto container rounded-xl ">
+            <form class="mx-auto mt-2 max-w-xl sm:mt-8">
+
+                <!-- personal information section "the first section" -->
+
+                <div class="bg-yellow-400 mt-2" id="personal-information">
+                    <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+                        <div>
+                            <label for="first-name" class="block text-sm/6 font-semibold text-gray-900">First
+                                name</label>
+                            <div class="mt-2.5">
+                                <input type="text" name="first-name" id="first-name" autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="last-name" class="block text-sm/6 font-semibold text-gray-900">Last name</label>
+                            <div class="mt-2.5">
+                                <input type="text" name="last-name" id="last-name" autocomplete="family-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-2">
+                            <label for="phone-number" class="block text-sm/6 font-semibold text-gray-900">Phone
+                                number</label>
+                            <div class="relative mt-2.5">
+                                <div class="absolute inset-y-0 left-0 flex items-center">
+                                    <label for="country" class="sr-only">Country</label>
+                                </div>
+                                <input type="tel" name="phone-number" id="phone-number" autocomplete="tel"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-2">
+                            <label for="email" class="block text-sm/6 font-semibold text-gray-900">Email</label>
+                            <div class="mt-2.5">
+                                <input type="email" name="email" id="email" autocomplete="email"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-2">
+                            <label for="profile-summary" class="block text-sm/6 font-semibold text-gray-900">Profile
+                                Summary</label>
+                            <div class="mt-2.5">
+                                <textarea name="profile-summary" id="profile-summary" rows="4"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 flex justify-between">
+                        <button type="button"
+                            class="block w-40 rounded-md border border-solid border-indigo-600 border-2 bg-white px-3.5 py-2.5 text-center text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Previous
+                        </button>
+                        <button type="button"
+                            class="block w-40 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Next
+                            Step
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Work experience section "the second section" -->
+
+                <div class="bg-red-400 mt-2" id="work-experience">
+                    <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+                        <div class="sm:col-span-2">
+                            <label for="role-title" class="block text-sm/6 font-semibold text-gray-900">Role
+                                Title</label>
+                            <div class="mt-2.5">
+                                <input type="text" name="role-title" id="role-title" autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                            </div>
+                        </div>
+
+
+                        <div class="sm:col-span-2">
+                            <label for="company-name" class="block text-sm/6 font-semibold text-gray-900">Company
+                                Name</label>
+                            <div class="mt-2.5">
+                                <input type="text" name="company-name" id="company-name" autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="start-date" class="block text-sm/6 font-semibold text-gray-900">Start
+                                Date</label>
+                            <div class="mt-2.5">
+                                <input type="date" name="start-date" id="start-date" autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <label for="end-date" class="block text-sm/6 font-semibold text-gray-900">End Date</label>
+                            <div class="mt-2.5">
+                                <input type="date" name="end-date" id="end-date" autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                            </div>
+                        </div>
+
+
+                        <div class="sm:col-span-2">
+                            <label for="responsibilities"
+                                class="block text-sm font-semibold text-gray-900">Responsibilities and Actions</label>
+                            <div class="mt-2.5 flex items-center ">
+                                <input type="text" name="responsibilities" id="responsibilities"
+                                    autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm mr-2">
+                                <button type="button" id="add-button"
+                                    class="px-3 py-3 flex justify-center items-center text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-inset focus:ring-indigo-500 rounded-md">
+                                    <i class="fa-solid fa-plus"></i></button>
+                                    
+                            </div>
+                            <ul id="responsibilities-list" class="border border-solid border-black mt-4 list-disc pl-6 text-gray-700 ">
+                                <li>you codeerr</li>
+                                <li>hello made the coffee</li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+
+                    <div class="mt-10 flex justify-between">
+                        <button type="button"
+                            class="block w-40 rounded-md border border-solid border-indigo-600 border-2 bg-white px-3.5 py-2.5 text-center text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Previous
+                        </button>
+                        <button type="button"
+                            class="block w-40 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Next
+                            Step
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- Education section "the third section" -->
+
+                <div class="bg-orange-400 mt-2" id="work-experience">
+                    <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+
+
+                        <div class="sm:col-span-2">
+                            <label for="degree" class="block text-sm/6 font-semibold text-gray-900">Degree or
+                                Qualification</label>
+                            <div class="mt-2.5">
+                                <select
+                                    class="block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm mr-2"
+                                    name="degree" id="degree">
+                                    <option value="" selected >Select a degree</option>
+                                    <option value="bachelor">Bachelor's Degree</option>
+                                    <option value="master">Master's Degree</option>
+                                    <option value="doctorate">Doctorate</option>
+                                    <option value="certificate">Certificate</option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="sm:col-span-2">
+                            <label for="major" class="block text-sm/6 font-semibold text-gray-900">Major</label>
+                            <div class="mt-2.5">
+                                <input type="text" name="major" id="major" autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                            </div>
+                        </div>
+
+
+                        <div class="sm:col-span-2">
+                            <label for="school-university" class="block text-sm/6 font-semibold text-gray-900">School or University Name</label>
+                            <div class="mt-2.5">
+                                <input type="text" name="school-university" id="school-university" autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="studying-start-date" class="block text-sm/6 font-semibold text-gray-900">Start
+                                Date</label>
+                            <div class="mt-2.5">
+                                <input type="date" name="studying-start-date" id="studying-start-date" autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <label for="studying-end-date" class="block text-sm/6 font-semibold text-gray-900">End Date</label>
+                            <div class="mt-2.5">
+                                <input type="date" name="studying-end-date" id="studying-end-date" autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="mt-10 flex justify-between">
+                        <button type="button"
+                            class="block w-40 rounded-md border border-solid border-indigo-600 border-2 bg-white px-3.5 py-2.5 text-center text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Previous
+                        </button>
+                        <button type="button"
+                            class="block w-40 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Next
+                            Step
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Skills section "the fourth section" --> 
+
+                <div class="bg-orange-400 mt-2" id="work-experience">
+                    <h2 class="text-balance text-center mb-8 text-2xl font-semibold tracking-tight text-gray-900 ">Technical & Soft Skills</h2>
+                    <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+
+
+                        
+                        <div class="sm:col-span-2">
+                            <label for="technical-skills"
+                                class="block text-sm font-semibold text-gray-900">Technical Skills</label>
+                            <div class="mt-2.5 flex items-center ">
+                                <input type="text" name="technical-skills" id="technical-skills"
+                                    autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm mr-2">
+                                <button type="button" id="add-button"
+                                    class="px-3 py-3 flex justify-center items-center text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-inset focus:ring-indigo-500 rounded-md">
+                                    <i class="fa-solid fa-plus"></i></button>
+                                    
+                            </div>
+                            <ul id="technical-skills-list" class="border border-solid border-black mt-4 list-disc pl-6 text-gray-700 ">
+                                <li>you codeerr</li>
+                                <li>hello made the coffee</li>
+                            </ul>
+                        </div>
+
+                        <div class="sm:col-span-2">
+                            <label for="soft-skills"
+                                class="block text-sm font-semibold text-gray-900">Soft Skills</label>
+                            <div class="mt-2.5 flex items-center ">
+                                <input type="text" name="soft-skills" id="soft-skills"
+                                    autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm mr-2">
+                                <button type="button" id="add-button"
+                                    class="px-3 py-3 flex justify-center items-center text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-inset focus:ring-indigo-500 rounded-md">
+                                    <i class="fa-solid fa-plus"></i></button>
+                                    
+                            </div>
+                            <ul id="soft-skills-list" class="border border-solid border-black mt-4 list-disc pl-6 text-gray-700 ">
+                                <li>you codeerr</li>
+                                <li>hello made the coffee</li>
+                            </ul>
+                        </div>
+
+
+                        
+
+
+                        
+
+                    </div>
+
+                    <div class="mt-10 flex justify-between">
+                        <button type="button"
+                            class="block w-40 rounded-md border border-solid border-indigo-600 border-2 bg-white px-3.5 py-2.5 text-center text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Previous
+                        </button>
+                        <button type="button"
+                            class="block w-40 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Next
+                            Step
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+    <script>
+
+        // here iam just testing some js codes 
+        document.getElementById('add-button').addEventListener('click', function () {
+
+            const inputField = document.getElementById('responsibilities');
+            const responsibilitiesList = document.getElementById('responsibilities-list');
+
+            
+            const responsibility = inputField.value.trim();
+
+            // ADd the responsibliy to the list below the field  live 
+            if (responsibility !== '') {
+                const listItem = document.createElement('li');
+                listItem.textContent = responsibility;
+                responsibilitiesList.appendChild(listItem);
+
+                inputField.value = ''; 
+                
+            }
+        });
+
+    </script>
+
 </body>
+
 </html>

@@ -1,0 +1,11 @@
+
+  #responsibilities-list {
+    max-height: 10rem; /* Maximum height with scroll */
+    /* overflow-y: auto;  */
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    hyphens: auto; 
+  }
+
+ 
+
