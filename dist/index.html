@@ -25,12 +25,26 @@
             <p class="mt-2 text-lg/8 text-gray-600">Create the Resume that will land you the next job role</p>
         </div>
 
-        <div class="mx-auto container rounded-xl ">
+        <div class="mx-auto w-9/12 rounded-xl" >
+            <!-- Progress bar -->
+            <div class="progressbar ">
+                <div class="progress" id="progress"></div>
+
+                <div class="progress-step progress-step-active" data-title="personal-info"></div>
+                <div class="progress-step" data-title="work-experience"></div>
+                <div class="progress-step" data-title="education"></div>
+                <div class="progress-step" data-title="skills"></div>
+                <div class="progress-step" data-title="links"></div>
+                <div class="progress-step" data-title="languages"></div>
+                <div class="progress-step" data-title="certifications"></div>
+            </div>
             <form class="mx-auto mt-2 max-w-xl sm:mt-8">
 
                 <!-- personal information section "the first section" -->
 
                 <div class="bg-yellow-400 mt-2" id="personal-information">
+                    <h2 class="text-balance text-center mb-8 text-2xl font-semibold tracking-tight text-gray-900 ">
+                        Personal Information</h2>
                     <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                         <div>
                             <label for="first-name" class="block text-sm/6 font-semibold text-gray-900">First
@@ -92,6 +106,8 @@
                 <!-- Work experience section "the second section" -->
 
                 <div class="bg-red-400 mt-2" id="work-experience">
+                    <h2 class="text-balance text-center mb-8 text-2xl font-semibold tracking-tight text-gray-900 ">
+                        Work Experience</h2>
                     <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                         <div class="sm:col-span-2">
                             <label for="role-title" class="block text-sm/6 font-semibold text-gray-900">Role
@@ -141,9 +157,10 @@
                                 <button type="button" id="add-button"
                                     class="px-3 py-3 flex justify-center items-center text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-inset focus:ring-indigo-500 rounded-md">
                                     <i class="fa-solid fa-plus"></i></button>
-                                    
+
                             </div>
-                            <ul id="responsibilities-list" class="border border-solid border-black mt-4 list-disc pl-6 text-gray-700 ">
+                            <ul id="responsibilities-list"
+                                class="border border-solid border-black mt-4 list-disc pl-6 text-gray-700 ">
                                 <li>you codeerr</li>
                                 <li>hello made the coffee</li>
                             </ul>
@@ -167,6 +184,8 @@
                 <!-- Education section "the third section" -->
 
                 <div class="bg-orange-400 mt-2" id="work-experience">
+                    <h2 class="text-balance text-center mb-8 text-2xl font-semibold tracking-tight text-gray-900 ">
+                        Education</h2>
                     <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
 
 
@@ -177,12 +196,12 @@
                                 <select
                                     class="block w-full rounded-md border-0 px-3.5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm mr-2"
                                     name="degree" id="degree">
-                                    <option value="" selected >Select a degree</option>
+                                    <option value="" selected>Select a degree</option>
                                     <option value="bachelor">Bachelor's Degree</option>
                                     <option value="master">Master's Degree</option>
                                     <option value="doctorate">Doctorate</option>
                                     <option value="certificate">Certificate</option>
-                                    
+
                                 </select>
                             </div>
                         </div>
@@ -198,9 +217,11 @@
 
 
                         <div class="sm:col-span-2">
-                            <label for="school-university" class="block text-sm/6 font-semibold text-gray-900">School or University Name</label>
+                            <label for="school-university" class="block text-sm/6 font-semibold text-gray-900">School or
+                                University Name</label>
                             <div class="mt-2.5">
-                                <input type="text" name="school-university" id="school-university" autocomplete="given-name"
+                                <input type="text" name="school-university" id="school-university"
+                                    autocomplete="given-name"
                                     class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                             </div>
                         </div>
@@ -209,16 +230,19 @@
                             <label for="studying-start-date" class="block text-sm/6 font-semibold text-gray-900">Start
                                 Date</label>
                             <div class="mt-2.5">
-                                <input type="date" name="studying-start-date" id="studying-start-date" autocomplete="given-name"
+                                <input type="date" name="studying-start-date" id="studying-start-date"
+                                    autocomplete="given-name"
                                     class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                             </div>
                         </div>
 
 
                         <div>
-                            <label for="studying-end-date" class="block text-sm/6 font-semibold text-gray-900">End Date</label>
+                            <label for="studying-end-date" class="block text-sm/6 font-semibold text-gray-900">End
+                                Date</label>
                             <div class="mt-2.5">
-                                <input type="date" name="studying-end-date" id="studying-end-date" autocomplete="given-name"
+                                <input type="date" name="studying-end-date" id="studying-end-date"
+                                    autocomplete="given-name"
                                     class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                             </div>
                         </div>
@@ -236,17 +260,16 @@
                     </div>
                 </div>
 
-                <!-- Skills section "the fourth section" --> 
+                <!-- Skills section "the fourth section" -->
 
-                <div class="bg-orange-400 mt-2" id="work-experience">
-                    <h2 class="text-balance text-center mb-8 text-2xl font-semibold tracking-tight text-gray-900 ">Technical & Soft Skills</h2>
+                <div class="bg-purple-500 mt-2" id="skills-section">
+                    <h2 class="text-balance text-center mb-8 text-2xl font-semibold tracking-tight text-gray-900 ">
+                        Technical & Soft Skills</h2>
                     <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
 
-
-                        
                         <div class="sm:col-span-2">
-                            <label for="technical-skills"
-                                class="block text-sm font-semibold text-gray-900">Technical Skills</label>
+                            <label for="technical-skills" class="block text-sm font-semibold text-gray-900">Technical
+                                Skills</label>
                             <div class="mt-2.5 flex items-center ">
                                 <input type="text" name="technical-skills" id="technical-skills"
                                     autocomplete="given-name"
@@ -254,38 +277,32 @@
                                 <button type="button" id="add-button"
                                     class="px-3 py-3 flex justify-center items-center text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-inset focus:ring-indigo-500 rounded-md">
                                     <i class="fa-solid fa-plus"></i></button>
-                                    
+
                             </div>
-                            <ul id="technical-skills-list" class="border border-solid border-black mt-4 list-disc pl-6 text-gray-700 ">
+                            <ul id="technical-skills-list"
+                                class="border border-solid border-black mt-4 list-disc pl-6 text-gray-700 ">
                                 <li>you codeerr</li>
                                 <li>hello made the coffee</li>
                             </ul>
                         </div>
 
                         <div class="sm:col-span-2">
-                            <label for="soft-skills"
-                                class="block text-sm font-semibold text-gray-900">Soft Skills</label>
+                            <label for="soft-skills" class="block text-sm font-semibold text-gray-900">Soft
+                                Skills</label>
                             <div class="mt-2.5 flex items-center ">
-                                <input type="text" name="soft-skills" id="soft-skills"
-                                    autocomplete="given-name"
+                                <input type="text" name="soft-skills" id="soft-skills" autocomplete="given-name"
                                     class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm mr-2">
                                 <button type="button" id="add-button"
                                     class="px-3 py-3 flex justify-center items-center text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-inset focus:ring-indigo-500 rounded-md">
                                     <i class="fa-solid fa-plus"></i></button>
-                                    
+
                             </div>
-                            <ul id="soft-skills-list" class="border border-solid border-black mt-4 list-disc pl-6 text-gray-700 ">
+                            <ul id="soft-skills-list"
+                                class="border border-solid border-black mt-4 list-disc pl-6 text-gray-700 ">
                                 <li>you codeerr</li>
                                 <li>hello made the coffee</li>
                             </ul>
                         </div>
-
-
-                        
-
-
-                        
-
                     </div>
 
                     <div class="mt-10 flex justify-between">
@@ -293,6 +310,195 @@
                             class="block w-40 rounded-md border border-solid border-indigo-600 border-2 bg-white px-3.5 py-2.5 text-center text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Previous
                         </button>
                         <button type="button"
+                            class="block w-40 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Next
+                            Step
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Links section "the fifth section" -->
+
+                <div class="bg-amber-300 mt-2" id="links-section">
+                    <h2 class="text-balance text-center mb-8 text-2xl font-semibold tracking-tight text-gray-900 ">
+                        Links & socials</h2>
+                    <div class="flex flex-wrap gap-4" id="links-to-add">
+
+                        <div class="bg-gray-600 px-6 py-2 rounded-md text-white hover:bg-gray-700 cursor-pointer "><i
+                                class="fa-solid fa-plus mr-2 cursor-pointer "></i>LinkedIn</div>
+                        <div class="bg-gray-600 px-6 py-2 rounded-md text-white hover:bg-gray-700 cursor-pointer"><i
+                                class="fa-solid fa-plus mr-2 cursor-pointer "></i>Twitter</div>
+                        <div class="bg-gray-600 px-6 py-2 rounded-md text-white hover:bg-gray-700 cursor-pointer"><i
+                                class="fa-solid fa-plus mr-2 cursor-pointer "></i>Github</div>
+                        <div class="bg-gray-600 px-6 py-2 rounded-md text-white hover:bg-gray-700 cursor-pointer"><i
+                                class="fa-solid fa-plus mr-2 cursor-pointer "></i>Personal Portfolio</div>
+                        <div class="bg-gray-600 px-6 py-2 rounded-md text-white hover:bg-gray-700 cursor-pointer"><i
+                                class="fa-solid fa-plus mr-2 cursor-pointer "></i>Behance</div>
+                        <div class="bg-gray-600 px-6 py-2 rounded-md text-white hover:bg-gray-700 cursor-pointer"><i
+                                class="fa-solid fa-plus mr-2 cursor-pointer "></i>Dribble</div>
+                        <div class="bg-gray-600 px-6 py-2 rounded-md text-white hover:bg-gray-700 cursor-pointer"><i
+                                class="fa-solid fa-plus mr-2 cursor-pointer "></i>Unsplash</div>
+
+                    </div>
+
+                    <div class=" grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-4" id="links-list">
+
+                        <div>
+                            <label for="linkedin-input"
+                                class="block text-sm/6 font-semibold text-gray-900">LinkedIn</label>
+                            <div class="mt-2.5 relative">
+                                <input type="text" name="linkedin-input" id="linkedin-input" autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                                <button type="button" id="trash-button"
+                                    class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-red-600">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="github-input" class="block text-sm/6 font-semibold text-gray-900">Github</label>
+                            <div class="mt-2.5 relative">
+                                <input type="text" name="github-input" id="github-input" autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                                <button type="button" id="trash-button"
+                                    class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-red-600">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <label for="twitter-input"
+                                class="block text-sm/6 font-semibold text-gray-900">Twitter</label>
+                            <div class="mt-2.5 relative">
+                                <input type="text" name="twitter-input" id="twitter-input" autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                                <button type="button" id="trash-button"
+                                    class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-red-600">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="mt-10 flex justify-between">
+                        <button type="button"
+                            class="block w-40 rounded-md border border-solid border-indigo-600 border-2 bg-white px-3.5 py-2.5 text-center text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Previous
+                        </button>
+                        <button type="button"
+                            class="block w-40 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Next
+                            Step
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Languages section "the sixth section" -->
+
+
+                <div class="bg-pink-500 mt-2" id="languages-section">
+                    <h2 class="text-balance text-center mb-8 text-2xl font-semibold tracking-tight text-gray-900 ">
+                        Languages</h2>
+
+                    <div class=" grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-4 border bord border-gray-500 py-4 px-4"
+                        id="links-list">
+
+                        <div>
+                            <label for="language-input"
+                                class="block text-sm/6 font-semibold text-gray-900">Language</label>
+                            <div class="mt-2.5 relative">
+                                <input type="text" name="language-input" id="language-input" autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                                <button type="button" id="trash-button"
+                                    class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-red-600">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <label for="language-level"
+                                class="block text-sm/6 font-semibold text-gray-900">Level</label>
+                            <div class="mt-2.5">
+                                <select name="language-level" id="language-level"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                                    <option value="">Select your Level</option>
+                                    <option value="A1">A1 (Beginner)</option>
+                                    <option value="A2">A2 (Elementary)</option>
+                                    <option value="B1">B1 (Intermediate)</option>
+                                    <option value="B2">B2 (Upper Intermediate)</option>
+                                    <option value="C1">C1 (Advanced)</option>
+                                    <option value="C2">C2 (Proficiency)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button
+                        class="sm:col-span-2 py-4 border border-dashed border-gray-800 border-2 font-medium tex rounded-xl w-full mt-2.5"><i
+                            class="fa-regular fa-circle-plus mr-2"></i>Add language</button>
+
+
+
+
+
+                    <div class="mt-10 flex justify-between">
+                        <button type="button"
+                            class="block w-40 rounded-md border border-solid border-indigo-600 border-2 bg-white px-3.5 py-2.5 text-center text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Previous
+                        </button>
+                        <button type="button"
+                            class="block w-40 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Next
+                            Step
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Certifications section "the seventh section" -->
+                <div class=" bg-blue-500 mt-2" id="certifications-section">
+                    <h2 class="text-balance text-center mb-8 text-2xl font-semibold tracking-tight text-gray-900 ">
+                        Certifications</h2>
+
+                    <div class=" grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 mt-4 border bord border-gray-500 py-4 px-4"
+                        id="certifications-list">
+
+                        <div>
+                            <label for="language-input"
+                                class="block text-sm/6 font-semibold text-gray-900">Certificacate</label>
+                            <div class="mt-2.5 relative">
+                                <input type="text" name="language-input" id="language-input" autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                                <button type="button" id="trash-button"
+                                    class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-red-600">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <label for="date-of-obtaining" class="block text-sm/6 font-semibold text-gray-900">Date of
+                                Obtaining</label>
+                            <div class="mt-2.5">
+                                <input type="date" name="date-of-obtaining" id="date-of-obtaining "
+                                    autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="sm:col-span-2 py-4 border border-dashed border-gray-800 border-2 font-medium tex rounded-xl w-full mt-2.5"><i
+                            class="fa-regular fa-circle-plus mr-2"></i>Add language</button>
+
+                    <div class="mt-10 flex justify-between">
+                        <button type="button"
+                            class="block w-40 rounded-md border border-solid border-indigo-600 border-2 bg-white px-3.5 py-2.5 text-center text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Previous
+                        </button>
+                        <button type="submit"
                             class="block w-40 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Next
                             Step
                         </button>
@@ -313,7 +519,7 @@
             const inputField = document.getElementById('responsibilities');
             const responsibilitiesList = document.getElementById('responsibilities-list');
 
-            
+
             const responsibility = inputField.value.trim();
 
             // ADd the responsibliy to the list below the field  live 
@@ -322,8 +528,8 @@
                 listItem.textContent = responsibility;
                 responsibilitiesList.appendChild(listItem);
 
-                inputField.value = ''; 
-                
+                inputField.value = '';
+
             }
         });
 
