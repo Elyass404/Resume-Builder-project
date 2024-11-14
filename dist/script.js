@@ -1,6 +1,7 @@
 // --------------- Variables declaration section ---------------
 let sectionCounter = 1;
 let nextBtn = document.querySelectorAll(".next-btn");
+let previousBtn = document.querySelectorAll(".previous-btn");
 let addWorkExperienceBtn = document.getElementById("add-work-button");
 let workExperienceCount = 1;
 let educationCount = 0;
@@ -8,16 +9,18 @@ let workToggle = document.querySelectorAll(".next-btn");
 let addEducationBtn = document.getElementById("add-education-button");
 let addTechnicalSkillBtn = document.getElementById('technical-skills-add-button');
 let addSoftSkillBtn = document.getElementById('soft-skills-add-button');
+let addLanguageBtn = document.getElementById('add-languages-button');
+let addCertificationBtn = document.getElementById('add-certification-button');
 
 // --------------- Arrays declaration section ---------------
-let perosonalInfo = [];
+let personalInfo = [];
 let workExperiences = [];
 let education = [];
 let technicalSkills = [];
 let softSkills = [];
 let links = [];
 let languages = [];
-let certificaitions = [];
+let certifications = [];
 
 // --------------- button with event listenners ---------------
 
@@ -25,13 +28,21 @@ nextBtn.forEach((btn) => {
   btn.addEventListener("click", goNextStep);
 });
 
+previousBtn.forEach((btn) => {
+  btn.addEventListener("click", goPrvStep);
+});
+
 addWorkExperienceBtn.addEventListener("click", addWorkExperience);
 
-addEducationBtn.addEventListener('click',addEducation)
+addEducationBtn.addEventListener('click',addEducation);
 
-addTechnicalSkillBtn.addEventListener('click', addTechnicalSkill)
+addTechnicalSkillBtn.addEventListener('click', addTechnicalSkill);
 
-addSoftSkillBtn.addEventListener('click', addSoftSkill)
+addSoftSkillBtn.addEventListener('click', addSoftSkill);
+
+addLanguageBtn.addEventListener('click',addLanguage);
+
+addCertificationBtn.addEventListener('click',addCertification)
 
 // --------------- fucntions building section ---------------
 
@@ -50,6 +61,21 @@ function goNextStep() {
   console.log(sectionCounter);
 }
 
+function goPrvStep() {
+    console.log("hello world");
+    let actualSection = document.querySelector(
+      `[data-section-count="${sectionCounter}"]`
+    );
+    let previousSection = document.querySelector(
+      `[data-section-count="${sectionCounter - 1}"]`
+    );
+    actualSection.classList.add("hidden");
+    previousSection.classList.remove("hidden");
+    sectionCounter--;
+    window.scrollTo({ top: 0, behavior: "auto" });
+    console.log(sectionCounter);
+  }
+
 
 
 function addWorkExperience() {
@@ -62,12 +88,12 @@ function addWorkExperience() {
 
 
   workExperience.innerHTML = `
-        <div class="w-full bg-yellow-400 py-3 text-2xl flex justify-between cursor-pointer" id="${togglerId}">
+        <div class="w-full border  p-5 rounded-lg shadow-md text-2xl flex justify-between cursor-pointer " id="${togglerId}">
             <h3 id="toggler-title-${workExperienceCount}">Role title</h3>
-            <div><i class="fa-solid fa-chevron-down mr-4"></i></div>
+            <div><i class="fa-solid fa-chevron-down mr-1"></i></div>
         </div>
 
-        <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 " id="${workDetailsId}">
+        <div class="border border-l-2 border-r-2 border-b-2 border-5 p-5 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 " id="${workDetailsId}">
             <div class="sm:col-span-2">
                 <label for="role-title-${workExperienceCount}" class="block text-sm font-semibold text-gray-900">Role Title</label>
                 <div class="mt-2.5">
@@ -115,7 +141,7 @@ function addWorkExperience() {
                 
             </div>
             <div class="sm:col-span-2 flex justify-end">
-            <button type="button" id="save-button-${workExperienceCount}" class=" w-full px-3 py-2 mt-4 bg-green-800 text-white rounded">Save</button> 
+            <button type="button" id="save-button-${workExperienceCount}" class=" w-full px-3 py-2 mt-2 mb-4 bg-green-800 text-white rounded">Save</button> 
             </div>
         </div>
     `;
@@ -313,11 +339,125 @@ function addSoftSkill(){
     }
 }
 
+function addLanguage(){
+     let languagesList = document.getElementById('languages-list');
+     let languageItem = document.createElement('div');
+     languageItem.classList.add("languages-item","grid","grid-cols-1","gap-x-8","gap-y-6","sm:grid-cols-2","mt-4","border","border-gray-500","py-4","px-4");
+     languageItem.innerHTML = `
+     <div>
+                                <label for="language-input"
+                                    class="block text-sm/6 font-semibold text-gray-900">Language</label>
+                                <div class="mt-2.5 relative">
+                                    <input type="text" name="language-input"
+                                        autocomplete="given-name"
+                                        class="language-input block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                                    <button type="button" id="trash-button"
+                                        class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-red-600">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <div>
+                                <label for="language-level"
+                                    class="block text-sm/6 font-semibold text-gray-900">Level</label>
+                                <div class="mt-2.5">
+                                    <select name="language-level" 
+                                        class="language-level block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                                        <option value="">Select your Level</option>
+                                        <option value="A1">A1 (Beginner)</option>
+                                        <option value="A2">A2 (Elementary)</option>
+                                        <option value="B1">B1 (Intermediate)</option>
+                                        <option value="B2">B2 (Upper Intermediate)</option>
+                                        <option value="C1">C1 (Advanced)</option>
+                                        <option value="C2">C2 (Proficiency)</option>
+                                    </select>
+                                </div>
+                            </div>
+    `
+    
+    languagesList.appendChild(languageItem);
+
+}
+
+function addCertification(){
+    let certificationsList = document.getElementById('certifications-list');
+    let certificationItem = document.createElement("div");
+    certificationItem.classList.add ("certification-item","grid","grid-cols-1","gap-x-8","gap-y-6","sm:grid-cols-2","mt-4","border","border-gray-500","py-4","px-4");
+    certificationItem.innerHTML = `
+    <div>
+                                <label for="certificate-input"
+                                    class="block text-sm/6 font-semibold text-gray-900">Certification</label>
+                                <div class="mt-2.5 relative">
+                                    <input type="text" name="certificate-input" id="certificate-input"
+                                        autocomplete="given-name"
+                                        class="certification-input block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                                    <button type="button" id="trash-button"
+                                        class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-red-600">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <div>
+                                <label for="date-of-obtaining" class="block text-sm/6 font-semibold text-gray-900">Date
+                                    of
+                                    Obtaining</label>
+                                <div class="mt-2.5">
+                                    <input type="date" name="date-of-obtaining" id="date-of-obtaining "
+                                        autocomplete="given-name"
+                                        class="date-of-obtaining block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                                </div>
+                            </div>
+
+                            <div class="sm:col-span-2">
+                                <label for="certification-link-input"
+                                    class="block text-sm/6 font-semibold text-gray-900">Certificate Link</label>
+                                <div class="mt-2.5 relative">
+                                    <input type="text" name="certification-link-input" id="certification-link-input"
+                                        autocomplete="given-name"
+                                        class="certification-link-input block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                                    <button type="button" id="trash-button"
+                                        class="certification-link-input absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-red-600">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+    `
+
+    certificationsList.appendChild(certificationItem);
+}
+
+
+let saveForm = document.getElementById("save-form-btn");
+
+saveForm.addEventListener('click',()=>{
+
+// --------------- this one for the personal info section ---------------
+
+personalInfo = [];
+let persoanlObj = {};
+let firstName = document.getElementById("first-name").value;
+let lastName = document.getElementById("last-name").value;
+let phoneNumber = document.getElementById("phone-number").value;
+let email = document.getElementById("email").value;
+let profileSummary = document.getElementById("profile-summary").value;
+
+persoanlObj.firstName = firstName;
+persoanlObj.lastName = lastName;
+persoanlObj.phoneNumber = phoneNumber;
+persoanlObj.email = email;
+persoanlObj.profileSummary = profileSummary;
+
+personalInfo.push(persoanlObj);
+
+console.log(personalInfo)
+
 // --------------- this one for the education section ---------------
 
-let saveEducation = document.getElementById("save-education-btn");
-
-saveEducation.addEventListener('click',()=>{
 
     
     education = [];
@@ -401,7 +541,45 @@ console.log(links);
 
 
 // --------------- this one for the languages section ---------------
+languages = [];
+let languagesItems = document.querySelectorAll('.languages-item');
+ 
+languagesItems.forEach((lngItm)=>{
+    let obj = {};
 
+    let language = lngItm.querySelector('.language-input').value;
+    let languageLevel = lngItm.querySelector('.language-level').value;
+    if (language == "" && languageLevel==""){
+        return;
+    }
+    obj.language = language;
+    obj.level = languageLevel;
+
+    languages.push(obj)
+})
+console.log(languages)
+
+// --------------- this one for the certifications section ---------------
+certifications = [];
+let certificationItems = document.querySelectorAll('.certification-item');
+
+certificationItems.forEach((crtf)=>{
+    obj = {};
+    let certification = crtf.querySelector('.certification-input').value;
+    let dateOfObtaining = crtf.querySelector('.date-of-obtaining').value;
+    let certificationLink = crtf.querySelector('.certification-link-input').value;
+
+    if(certification =="" && dateOfObtaining ==""){
+        return;
+    }
+
+    obj.certification = certification;
+    obj.dateOfObtaining = dateOfObtaining;
+    obj.certificationLink = certificationLink;
+
+    certifications.push(obj);
+})
+console.log(certifications);
 
 })
 
