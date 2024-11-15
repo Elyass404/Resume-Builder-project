@@ -27,22 +27,23 @@
 
         <div class="mx-auto w-9/12 rounded-xl">
             <!-- Progress bar -->
-            <div class="progressbar ">
-                <div class="progress" id="progress"></div>
+            <div class="progressbar bg-transparent ">
+                <div class="progress bg-transparent " id="progress"></div>
 
-                <div class="progress-step progress-step-active" data-title="personal-info"></div>
-                <div class="progress-step" data-title="work-experience"></div>
-                <div class="progress-step" data-title="education"></div>
-                <div class="progress-step" data-title="skills"></div>
-                <div class="progress-step" data-title="links"></div>
-                <div class="progress-step" data-title="languages"></div>
-                <div class="progress-step" data-title="certifications"></div>
+                <div class="progress-step progress-step-active" data-progress-bar="1" data-title="personal-info"></div>
+                <div class="progress-step " data-title="work-experience" data-progress-bar="2"></div>
+                <div class="progress-step" data-title="education" data-progress-bar="3"></div>
+                <div class="progress-step" data-title="skills" data-progress-bar="4"></div>
+                <div class="progress-step" data-title="links" data-progress-bar="5"></div>
+                <div class="progress-step" data-title="languages" data-progress-bar="6"></div>
+                <div class="progress-step" data-title="certifications" data-progress-bar="7"></div>
             </div>
             <form class="mx-auto mt-2 max-w-xl sm:mt-8">
 
                 <!-- personal information section "the first section" -->
 
-                <div class=" mt-2 active-section p-8 rounded-lg shadow-xl " data-section-count="1" id="personal-information">
+                <div class=" mt-2 active-section p-8 rounded-lg shadow-xl " data-section-count="1"
+                    id="personal-information">
                     <h2 class="text-balance text-center mb-8 text-2xl  tracking-tight text-gray-900 ">
                         Personal Information</h2>
                     <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
@@ -58,6 +59,15 @@
                             <label for="last-name" class="block text-sm/6 font-semibold text-gray-900">Last name</label>
                             <div class="mt-2.5">
                                 <input type="text" name="last-name" id="last-name" autocomplete="family-name"
+                                    class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-2">
+                            <label for="role-title" class="block text-sm/6 font-semibold text-gray-900">Role
+                                Title</label>
+                            <div class="mt-2.5">
+                                <input type="text" name="role-title" id="role-title" autocomplete="family-name"
                                     class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                             </div>
                         </div>
@@ -171,7 +181,7 @@
                             </div>
                             <ul id="technical-skills-list"
                                 class="border border-solid border-black mt-4 list-disc pl-6 text-gray-700 ">
-                    
+
                             </ul>
                         </div>
 
@@ -188,7 +198,7 @@
                             </div>
                             <ul id="soft-skills-list"
                                 class="border border-solid border-black mt-4 list-disc pl-6 text-gray-700 ">
-                                
+
                             </ul>
                         </div>
                     </div>
@@ -328,12 +338,12 @@
                                     <select name="language-level"
                                         class="language-level block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                                         <option value="">Select your Level</option>
-                                        <option value="A1">A1 (Beginner)</option>
-                                        <option value="A2">A2 (Elementary)</option>
-                                        <option value="B1">B1 (Intermediate)</option>
-                                        <option value="B2">B2 (Upper Intermediate)</option>
-                                        <option value="C1">C1 (Advanced)</option>
-                                        <option value="C2">C2 (Proficiency)</option>
+                                        <option value="A1 (Beginner)">A1 (Beginner)</option>
+                                        <option value="A2 (Elementary)">A2 (Elementary)</option>
+                                        <option value="B1 (Intermediate)">B1 (Intermediate)</option>
+                                        <option value="B2 (Upper Intermediate)">B2 (Upper Intermediate)</option>
+                                        <option value="C1 (Advanced)">C1 (Advanced)</option>
+                                        <option value="C2 (Proficiency)">C2 (Proficiency)</option>
                                     </select>
                                 </div>
                             </div>
@@ -410,8 +420,8 @@
                         </div>
                     </div>
 
-                    <button type="button"
-                        id="add-certification-button" class="sm:col-span-2 py-4 border border-dashed border-gray-800 border-2 font-medium tex rounded-xl w-full mt-2.5"><i
+                    <button type="button" id="add-certification-button"
+                        class="sm:col-span-2 py-4 border border-dashed border-gray-800 border-2 font-medium tex rounded-xl w-full mt-2.5"><i
                             class="fa-regular fa-circle-plus mr-2"></i>Add Certificaton</button>
 
                     <div class="mt-10 flex justify-between">
@@ -419,21 +429,36 @@
                             class="previous-btn block w-40 rounded-md border border-solid border-indigo-600 border-2 bg-white px-3.5 py-2.5 text-center text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Previous
                         </button>
                         <button type="button"
-                            class="finish-btn block w-40 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" id="save-form-btn" > Done
+                            class="next-btn finish-btn block w-40 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            id="save-form-btn"> Done
                         </button>
                     </div>
                 </div>
             </form>
+
+           <div class="hidden" data-section-count="8" id="cv-preview-section">
+               
+                </div>
+                <div class="hidden mt-10 flex justify-between" id="save-button-section">
+                    <button type="button"
+                        class="previous-btn block w-40 rounded-md border border-solid border-indigo-600 border-2 bg-white px-3.5 py-2.5 text-center text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Previous
+                    </button>
+                    <button type="button"
+                        class="block w-40 rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        id="save-resume-btn"> Save PDF Resume
+                    </button>
+            </div>
+            
         </div>
     </div>
 
 
 
     <script src="script.js"></script>
-    <script>
+    <!-- Include jsPDF and html2canvas libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
 
-
-    </script>
 
 </body>
 

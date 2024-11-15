@@ -11,6 +11,8 @@ let addTechnicalSkillBtn = document.getElementById('technical-skills-add-button'
 let addSoftSkillBtn = document.getElementById('soft-skills-add-button');
 let addLanguageBtn = document.getElementById('add-languages-button');
 let addCertificationBtn = document.getElementById('add-certification-button');
+let doneFormBtn = document.getElementById('save-form-btn');
+let savereResumeBtn = document.getElementById('save-resume-btn');
 
 // --------------- Arrays declaration section ---------------
 let personalInfo = [];
@@ -42,7 +44,9 @@ addSoftSkillBtn.addEventListener('click', addSoftSkill);
 
 addLanguageBtn.addEventListener('click',addLanguage);
 
-addCertificationBtn.addEventListener('click',addCertification)
+addCertificationBtn.addEventListener('click',addCertification);
+
+savereResumeBtn.addEventListener('click',saveResumePdf)
 
 // --------------- fucntions building section ---------------
 
@@ -54,11 +58,18 @@ function goNextStep() {
   let nextSection = document.querySelector(
     `[data-section-count="${sectionCounter + 1}"]`
   );
+
+  let actualProgressbar = document.querySelector(`[data-progress-bar="${sectionCounter+1}"]`); 
+
   actualSection.classList.add("hidden");
   nextSection.classList.remove("hidden");
-  sectionCounter++;
+  
   window.scrollTo({ top: 0, behavior: "auto" });
+
+sectionCounter++;
+
   console.log(sectionCounter);
+
 }
 
 function goPrvStep() {
@@ -69,161 +80,121 @@ function goPrvStep() {
     let previousSection = document.querySelector(
       `[data-section-count="${sectionCounter - 1}"]`
     );
+
+    let actualProgressbar = document.querySelector(`[data-progress-bar="${sectionCounter}"]`);
+
     actualSection.classList.add("hidden");
     previousSection.classList.remove("hidden");
+
+    actualProgressbar.classList.remove("progress-step-active");
+
     sectionCounter--;
     window.scrollTo({ top: 0, behavior: "auto" });
     console.log(sectionCounter);
   }
 
-
-
 function addWorkExperience() {
-  let workExperience = document.createElement("div");
-  workExperience.classList.add("work-experience-item");
+    let workExperience = document.createElement("div");
+    workExperience.classList.add("work-experience-item");
 
-  
-  let togglerId = `work-experience-toggle-${workExperienceCount}`;
-  let workDetailsId = `work-experience-details-${workExperienceCount}`;
+    workExperience.innerHTML = `
+        <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+            <div class="sm:col-span-2 flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-gray-900">Work Experience</h3>
+                <button type="button" class="delete-button text-red-600 hover:text-red-800"><i class="fa-solid fa-trash"></i></button>
+            </div>
 
-
-  workExperience.innerHTML = `
-        <div class="w-full border  p-5 rounded-lg shadow-md text-2xl flex justify-between cursor-pointer " id="${togglerId}">
-            <h3 id="toggler-title-${workExperienceCount}">Role title</h3>
-            <div><i class="fa-solid fa-chevron-down mr-1"></i></div>
-        </div>
-
-        <div class="border border-l-2 border-r-2 border-b-2 border-5 p-5 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 " id="${workDetailsId}">
             <div class="sm:col-span-2">
-                <label for="role-title-${workExperienceCount}" class="block text-sm font-semibold text-gray-900">Role Title</label>
+                <label for="role-title" class="block text-sm font-semibold text-gray-900">Role Title</label>
                 <div class="mt-2.5">
-                    <input type="text" name="role-title-${workExperienceCount}" id="role-title-${workExperienceCount}" autocomplete="given-name"
-                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+                    <input type="text" name="role-title" class="role-title block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
                 </div>
             </div>
 
             <div class="sm:col-span-2">
-                <label for="company-name-${workExperienceCount}" class="block text-sm font-semibold text-gray-900">Company Name</label>
+                <label for="company-name" class="block text-sm font-semibold text-gray-900">Company Name</label>
                 <div class="mt-2.5">
-                    <input type="text" name="company-name-${workExperienceCount}" id="company-name-${workExperienceCount}" autocomplete="given-name"
-                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+                    <input type="text" name="company-name" class="company-name block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
                 </div>
             </div>
 
             <div>
-                <label for="start-date-${workExperienceCount}" class="block text-sm font-semibold text-gray-900">Start Date</label>
+                <label for="start-date" class="block text-sm font-semibold text-gray-900">Start Date</label>
                 <div class="mt-2.5">
-                    <input type="date" name="start-date-${workExperienceCount}" id="start-date-${workExperienceCount}" autocomplete="given-name"
-                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+                    <input type="date" name="start-date" class="start-date block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
                 </div>
             </div>
 
             <div>
-                <label for="end-date-${workExperienceCount}" class="block text-sm font-semibold text-gray-900">End Date</label>
+                <label for="end-date" class="block text-sm font-semibold text-gray-900">End Date</label>
                 <div class="mt-2.5">
-                    <input type="date" name="end-date-${workExperienceCount}" id="end-date-${workExperienceCount}" autocomplete="given-name"
-                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+                    <input type="date" name="end-date" class="end-date block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
                 </div>
             </div>
 
             <div class="sm:col-span-2">
-                <label for="responsibilities-${workExperienceCount}" class="block text-sm font-semibold text-gray-900">Responsibilities and Actions</label>
+                <label for="responsibilities" class="block text-sm font-semibold text-gray-900">Responsibilities and Actions</label>
                 <div class="mt-2.5 flex items-center">
-                    <input type="text" name="responsibilities-${workExperienceCount}" id="responsibilities-${workExperienceCount}" autocomplete="given-name"
-                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm mr-2">
-                    <button type="button" id="add-button-${workExperienceCount}" class="px-3 py-3 flex justify-center items-center text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-inset focus:ring-indigo-500 rounded-md">
+                    <input type="text" name="responsibilities" class="responsibilities block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm mr-2">
+                    <button type="button" class="add-button px-3 py-3 flex justify-center items-center text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-inset focus:ring-indigo-500 rounded-md">
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
-                <ul id="responsibilities-list-${workExperienceCount}" class="border border-solid border-black mt-4 list-disc pl-6 text-gray-700">
-                    
-                </ul>
-                
+                <ul class="responsibilities-list border border-solid border-black mt-4 list-disc pl-6 text-gray-700"></ul>
             </div>
             <div class="sm:col-span-2 flex justify-end">
-            <button type="button" id="save-button-${workExperienceCount}" class=" w-full px-3 py-2 mt-2 mb-4 bg-green-800 text-white rounded">Save</button> 
+                <button type="button" class="save-button w-full px-3 py-2 mt-2 mb-4 bg-green-800 text-white rounded">Save</button> 
             </div>
         </div>
     `;
 
-  let workExperienceList = document.getElementById("work-experience-list");
-  workExperienceList.appendChild(workExperience);
+    let workExperienceList = document.getElementById("work-experience-list");
+    workExperienceList.appendChild(workExperience);
 
-  
-  let toggler = document.getElementById(togglerId);
-  toggler.addEventListener("click", function () {
-    let workDetails = document.getElementById(workDetailsId);
-    workDetails.classList.toggle("hidden");
-  });
+    let roleInput = workExperience.querySelector(".role-title");
+    let companyInput = workExperience.querySelector(".company-name");
+    let startDateInput = workExperience.querySelector(".start-date");
+    let endDateInput = workExperience.querySelector(".end-date");
+    let responsibilityPlusBTN = workExperience.querySelector(".add-button");
+    let responsibilitiesList = workExperience.querySelector(".responsibilities-list");
 
+    responsibilityPlusBTN.addEventListener('click', () => {
+        let responsibilityValue = workExperience.querySelector(".responsibilities").value;
 
+        if (responsibilityValue !== '') {
+            let listItem = document.createElement('li');
+            listItem.textContent = responsibilityValue;
+            responsibilitiesList.appendChild(listItem);
 
-let togglerTitle = document.getElementById(`toggler-title-${workExperienceCount}`);
-let roleInput = document.getElementById(`role-title-${workExperienceCount}`);
-let companyInput = document.getElementById(`company-name-${workExperienceCount}`);
-let startDateInput = document.getElementById(`start-date-${workExperienceCount}`);
-let endDateInput = document.getElementById(`end-date-${workExperienceCount}`);
-let responsibilityPlusBTN = document.getElementById(`add-button-${workExperienceCount}`)
-let workResponsibilities = document.querySelectorAll(`#responsibilities-list-${workExperienceCount} li`);
+            workExperience.querySelector(".responsibilities").value = '';
+        }
+    });
 
+    let saveWorkExperienceBtn = workExperience.querySelector(".save-button");
+    saveWorkExperienceBtn.addEventListener('click', () => {
+        let workExperienceObj = {
+            roleTitle: roleInput.value,
+            companyName: companyInput.value,
+            startDate: startDateInput.value,
+            endDate: endDateInput.value,
+            responsibilities: []
+        };
 
+        responsibilitiesList.querySelectorAll('li').forEach(responsibility => {
+            workExperienceObj.responsibilities.push(responsibility.textContent);
+        });
 
-responsibilityPlusBTN.addEventListener('click',()=>{
+        workExperiences.push(workExperienceObj);
 
-            let responsibilitiesInputField = document.getElementById(`responsibilities-${workExperienceCount-1}`);
-            let responsibilitiesList = document.getElementById(`responsibilities-list-${workExperienceCount-1}`);
-            let responsibilityValue = responsibilitiesInputField.value;
-            console.log(responsibilitiesList);
-            
+        console.log(workExperiences);
+    });
 
-            // ADd the responsibliy to the list below the field  live 
-            if (responsibilityValue !== '') {
-                let listItem = document.createElement('li');
-                listItem.innerHTML= responsibilityValue;
-                listItem.textContent = responsibilityValue;
-                responsibilitiesList.appendChild(listItem);
-
-                responsibilitiesInputField.value = '';
-
-            }
-})
-
-let saveWorkExperienceBtn = document.getElementById(`save-button-${workExperienceCount}`);
-saveWorkExperienceBtn.addEventListener('click', ()=>{
-    let workExperienceObj ={
-        roleTitle : roleInput.value,
-        companyName :companyInput.value,
-        startDate : startDateInput.value,
-        endDate : endDateInput.value, 
-        responsibilities : []
-    }
-
-    workResponsibilities.forEach(responisibility =>{
-        workExperienceObj.responsibilities.push(responisibility.textContent);
-    })
-
-
-
-    workExperiences[workExperienceCount-2]=workExperienceObj;
     
-    console.log(workExperiences[0]);
-    console.log(workExperienceCount);
-    console.log(workExperiences);
-    
-
-})
-
-workExperienceCount ++;
-
-roleInput.addEventListener('input', updateTitle);
-companyInput.addEventListener('input', updateTitle);
-
-function updateTitle() {
-    togglerTitle.innerHTML = `${roleInput.value} in ${companyInput.value}`;
+    let deleteButton = workExperience.querySelector(".delete-button");
+    deleteButton.addEventListener('click', () => {
+        workExperienceList.removeChild(workExperience);
+    });
 }
-
-}
-
 
 function addEducation(){
 let educationList = document.getElementById("education-list");
@@ -310,7 +281,7 @@ function addTechnicalSkill(){
         
         let technicalSkillValue = technicalSkillsInput.value;
         
-        // ADd the responsibliy to the list below the field  live 
+        // ADd the hard skill to the list below the field  live 
         if (technicalSkillValue !== '') {
             let technicalSkillItem = document.createElement('li');
             technicalSkillItem.textContent = technicalSkillValue;
@@ -328,7 +299,7 @@ function addSoftSkill(){
     
     let softSkillValue = softSkillsInput.value;
     
-    // ADd the responsibliy to the list below the field  live 
+    // ADd the soft skill to the list below the field  live 
     if (softSkillValue !== '') {
         let softSkillItem = document.createElement('li');
         softSkillItem.textContent = softSkillValue;
@@ -366,12 +337,12 @@ function addLanguage(){
                                     <select name="language-level" 
                                         class="language-level block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
                                         <option value="">Select your Level</option>
-                                        <option value="A1">A1 (Beginner)</option>
-                                        <option value="A2">A2 (Elementary)</option>
-                                        <option value="B1">B1 (Intermediate)</option>
-                                        <option value="B2">B2 (Upper Intermediate)</option>
-                                        <option value="C1">C1 (Advanced)</option>
-                                        <option value="C2">C2 (Proficiency)</option>
+                                        <option value="A1 (Beginner)">A1 (Beginner)</option>
+                                        <option value="A2 (Elementary)">A2 (Elementary)</option>
+                                        <option value="B1 (Intermediate)">B1 (Intermediate)</option>
+                                        <option value="B2 (Upper Intermediate)">B2 (Upper Intermediate)</option>
+                                        <option value="C1 (Advanced)">C1 (Advanced)</option>
+                                        <option value="C2 (Proficiency)">C2 (Proficiency)</option>
                                     </select>
                                 </div>
                             </div>
@@ -432,22 +403,26 @@ function addCertification(){
 }
 
 
-let saveForm = document.getElementById("save-form-btn");
 
-saveForm.addEventListener('click',()=>{
+// --------------- this function to show the resume with its information and give the ability to go back if any thing is wrong   ---------------
+doneFormBtn.addEventListener('click',()=>{
 
 // --------------- this one for the personal info section ---------------
+document.getElementById('save-button-section').classList.remove("hidden");
 
 personalInfo = [];
 let persoanlObj = {};
 let firstName = document.getElementById("first-name").value;
 let lastName = document.getElementById("last-name").value;
+let profileTitle = document.getElementById("role-title").value;
 let phoneNumber = document.getElementById("phone-number").value;
 let email = document.getElementById("email").value;
 let profileSummary = document.getElementById("profile-summary").value;
 
+
 persoanlObj.firstName = firstName;
 persoanlObj.lastName = lastName;
+persoanlObj.profileTitle = profileTitle;
 persoanlObj.phoneNumber = phoneNumber;
 persoanlObj.email = email;
 persoanlObj.profileSummary = profileSummary;
@@ -581,5 +556,246 @@ certificationItems.forEach((crtf)=>{
 })
 console.log(certifications);
 
+// --------------- this one for the resume review section ---------------
+let cvContent = `
+            <!-- Main Container -->
+    <div class="max-w-6xl mx-auto my-8 bg-white border border-solid">
+        <!-- Header Section with Gradient -->
+        <div class="relative bg-gradient-to-r from-purple-900 to-indigo-800 p-12 text-white">
+            <div class="max-w-4xl">
+                <h1 class="text-5xl font-bold mb-3">${personalInfo[0].firstName} ${personalInfo[0].lastName}</h1>
+                <p class="text-xl font-light mb-6">${personalInfo[0].profileTitle}</p>
+                <div class="flex  flex-wrap gap-3 justify-start text-purple-200">
+                    <div class="flex justify-start space-x-2">
+                        <span>Email: </span>
+                        <span>${personalInfo[0].email}</span>
+                    </div>
+                    <div class="flex items-start space-x-2">
+                        <span>Phone: </span>
+                        <span>${personalInfo[0].phoneNumber}</span>
+                    </div>
+                    ${links.map(link => `
+                        <div class="flex items-start space-x-2">
+                         <span>${link.label}: </span>
+                        <span>${link.value} </span>
+                    </div>
+                    `).join('')}
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-12 gap-8 p-12">
+            <!-- Left Column -->
+            <div class="col-span-8 space-y-8">
+                <!-- SUMMARY -->
+                <section>
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800">PRROFILE SUMMARY</h2>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed pl-16">${personalInfo[0].profileSummary}</p>
+                </section>
+
+                <!--WORK Experience -->
+                <section>
+                    <div class="flex items-center mb-8">
+                        <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800">WORK EXPERIENCE</h2>
+                    </div>
+                   
+                    
+                    <div class="space-y-4 pl-16">
+                    ${workExperiences.map(experience =>`
+                        
+                        <div class="relative pb-8 border-l-2 border-purple-200 pl-8">
+                            <div class="absolute -left-2 top-0 w-6 h-6 bg-purple-600 rounded-full"></div>
+                            <div class="mb-4">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h3 class="text-xl font-bold text-gray-800">${experience.roleTitle}</h3>
+                                    <span class="text-purple-600 font-semibold">${experience.startDate} - ${experience.endDate}</span>
+                                </div>
+                                <p class="text-gray-600 mb-4">${experience.companyName}</p>
+                                <ul class="space-y-2 text-gray-600">
+                                ${experience.responsibilities.map(respo=>`
+                                <li class="flex items-start">
+                                <span class="text-purple-600 mr-2">•</span>
+                                ${respo}</li>
+                                    `).join('')}
+                                    
+                                </ul>
+                            </div>
+                        </div>
+
+                    `)}
+                       
+
+                        
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-span-4 space-y-4">
+                <!-- technical skills -->
+                <section class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-800">HARD SKILLS</h2>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                    ${technicalSkills.map(skill=>`
+                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">${skill}</span>
+                        `).join('')}
+                    </div>
+                </section>
+                <!-- soft skills -->
+                <section class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-800">SOFT SKILLS</h2>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                    ${softSkills.map(skill=>`
+                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">${skill}</span>
+                        `).join('')}
+                    </div>
+                </section>
+
+                <!-- Education -->
+                <section class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+                                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-800">EDUCATION</h2>
+                    </div>
+                    <div>
+                    ${education.map(educa=>`
+                        
+                        <h3 class="font-bold text-gray-800 mb-1">${educa.degree} ${educa.major}</h3>
+                        <p class="text-gray-600  mb-1">${educa.universityName}</p>
+                        <p class="text-purple-600 font-medium">de ${educa.startDate} - ${educa.endDate}</p>
+                        
+                        `).join('')}
+                        
+                    </div>
+                </section>
+
+                <!-- Languages -->
+                <section class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">LANGUAGES</h2>
+                </div>
+                <div class="space-y-4">
+
+                ${languages.map(language => `
+                        <div class="flex justify-between mb-1 border-b-2 pb-1">
+                            <span class="text-gray-700 font-medium">${language.language}</span>
+                            <span class="text-purple-600">${language.level}</span>
+                        </div>
+                        `).join('')}
+                </div>
+            </section>
+
+            <!-- Certifications -->
+            <section class="bg-gray-50 p-6 rounded-lg">
+                <div class="flex items-center mb-6">
+                    <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                        <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800">CERTIFICATIONS</h2>
+                </div>
+                <ul class="space-y-3">
+                    ${certifications.map(certif=>`
+
+                        <li class="flex flex-col border-b-2 pb-1">
+                        <h5 class="font-medium text-gray-800">${certif.certification}</h5>
+                        <p class="text-gray-600">${certif.dateOfObtaining}</p>
+                        <a class="text-violet-800 hover:underline" href="${certif.certificationLink}">Link To Certificate</a>
+                    </li>
+                        
+                        `).join('')}
+                    
+                </ul>
+            </section>
+            
+        </div>
+    </div>
+</div>
+      `;
+
+      document.getElementById('cv-preview-section').innerHTML = cvContent;
+
+
 })
+
+
+// --------------- this function to save the resum as a pdf flie and also in the foramt of A4  ---------------
+
+function saveResumePdf(){
+            
+        const cvPreview = document.getElementById('cv-preview-section');
+        
+                html2canvas(cvPreview).then(canvas => {
+                    const imgData = canvas.toDataURL('image/png');
+                    const pdf = new jspdf.jsPDF({
+                        orientation: 'portrait',
+                        unit: 'px',
+                        format: 'a4'
+                    });
+        
+                    const imgProps = pdf.getImageProperties(imgData);
+                    const pdfWidth = pdf.internal.pageSize.getWidth();
+                    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        
+                    let position = 0;
+                    const pageHeight = pdf.internal.pageSize.getHeight();
+        
+                    if (pdfHeight <= pageHeight) {
+                        // If content height is within a single page
+                        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                    } else {
+                        // If content height exceeds a single page
+                        while (position < pdfHeight) {
+                            pdf.addImage(imgData, 'PNG', 0, -position, pdfWidth, pdfHeight);
+                            position += pageHeight;
+                            if (position < pdfHeight) {
+                                pdf.addPage();
+                            }
+                        }
+                    }
+        
+                    pdf.save('resume.pdf');
+                
+                });
+}
 
