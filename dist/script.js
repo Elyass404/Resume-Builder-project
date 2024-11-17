@@ -60,7 +60,7 @@ function goNextStep() {
   );
 
   let actualProgressbar = document.querySelector(`[data-progress-bar="${sectionCounter+1}"]`); 
-
+  actualProgressbar.classList.add("progress-step-active");
   actualSection.classList.add("hidden");
   nextSection.classList.remove("hidden");
   
@@ -82,6 +82,7 @@ function goPrvStep() {
     );
 
     let actualProgressbar = document.querySelector(`[data-progress-bar="${sectionCounter}"]`);
+    actualProgressbar.classList.remove("progress-step-active");
 
     actualSection.classList.add("hidden");
     previousSection.classList.remove("hidden");
