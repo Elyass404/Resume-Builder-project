@@ -1,3 +1,6 @@
+// --------------- impoting the fucntions of the form validator ---------------
+import formValidator from './formValidator.js';
+
 // --------------- Variables declaration section ---------------
 let sectionCounter = 1;
 let nextBtn = document.querySelectorAll(".next-btn");
@@ -7,12 +10,14 @@ let workExperienceCount = 1;
 let educationCount = 0;
 let workToggle = document.querySelectorAll(".next-btn");
 let addEducationBtn = document.getElementById("add-education-button");
-let addTechnicalSkillBtn = document.getElementById('technical-skills-add-button');
-let addSoftSkillBtn = document.getElementById('soft-skills-add-button');
-let addLanguageBtn = document.getElementById('add-languages-button');
-let addCertificationBtn = document.getElementById('add-certification-button');
-let doneFormBtn = document.getElementById('save-form-btn');
-let savereResumeBtn = document.getElementById('save-resume-btn');
+let addTechnicalSkillBtn = document.getElementById(
+  "technical-skills-add-button"
+);
+let addSoftSkillBtn = document.getElementById("soft-skills-add-button");
+let addLanguageBtn = document.getElementById("add-languages-button");
+let addCertificationBtn = document.getElementById("add-certification-button");
+let doneFormBtn = document.getElementById("save-form-btn");
+let savereResumeBtn = document.getElementById("save-resume-btn");
 
 // --------------- Arrays declaration section ---------------
 let personalInfo = [];
@@ -36,17 +41,17 @@ previousBtn.forEach((btn) => {
 
 addWorkExperienceBtn.addEventListener("click", addWorkExperience);
 
-addEducationBtn.addEventListener('click',addEducation);
+addEducationBtn.addEventListener("click", addEducation);
 
-addTechnicalSkillBtn.addEventListener('click', addTechnicalSkill);
+addTechnicalSkillBtn.addEventListener("click", addTechnicalSkill);
 
-addSoftSkillBtn.addEventListener('click', addSoftSkill);
+addSoftSkillBtn.addEventListener("click", addSoftSkill);
 
-addLanguageBtn.addEventListener('click',addLanguage);
+addLanguageBtn.addEventListener("click", addLanguage);
 
-addCertificationBtn.addEventListener('click',addCertification);
+addCertificationBtn.addEventListener("click", addCertification);
 
-savereResumeBtn.addEventListener('click',saveResumePdf)
+savereResumeBtn.addEventListener("click", saveResumePdf);
 
 // --------------- fucntions building section ---------------
 
@@ -59,46 +64,49 @@ function goNextStep() {
     `[data-section-count="${sectionCounter + 1}"]`
   );
 
-  let actualProgressbar = document.querySelector(`[data-progress-bar="${sectionCounter+1}"]`); 
+  let actualProgressbar = document.querySelector(
+    `[data-progress-bar="${sectionCounter + 1}"]`
+  );
   actualProgressbar.classList.add("progress-step-active");
   actualSection.classList.add("hidden");
   nextSection.classList.remove("hidden");
-  
+
   window.scrollTo({ top: 0, behavior: "auto" });
 
-sectionCounter++;
+  sectionCounter++;
 
   console.log(sectionCounter);
-
 }
 
 function goPrvStep() {
-    console.log("hello world");
-    let actualSection = document.querySelector(
-      `[data-section-count="${sectionCounter}"]`
-    );
-    let previousSection = document.querySelector(
-      `[data-section-count="${sectionCounter - 1}"]`
-    );
+  console.log("hello world");
+  let actualSection = document.querySelector(
+    `[data-section-count="${sectionCounter}"]`
+  );
+  let previousSection = document.querySelector(
+    `[data-section-count="${sectionCounter - 1}"]`
+  );
 
-    let actualProgressbar = document.querySelector(`[data-progress-bar="${sectionCounter}"]`);
-    actualProgressbar.classList.remove("progress-step-active");
+  let actualProgressbar = document.querySelector(
+    `[data-progress-bar="${sectionCounter}"]`
+  );
+  actualProgressbar.classList.remove("progress-step-active");
 
-    actualSection.classList.add("hidden");
-    previousSection.classList.remove("hidden");
+  actualSection.classList.add("hidden");
+  previousSection.classList.remove("hidden");
 
-    actualProgressbar.classList.remove("progress-step-active");
+  actualProgressbar.classList.remove("progress-step-active");
 
-    sectionCounter--;
-    window.scrollTo({ top: 0, behavior: "auto" });
-    console.log(sectionCounter);
-  }
+  sectionCounter--;
+  window.scrollTo({ top: 0, behavior: "auto" });
+  console.log(sectionCounter);
+}
 
 function addWorkExperience() {
-    let workExperience = document.createElement("div");
-    workExperience.classList.add("work-experience-item");
+  let workExperience = document.createElement("div");
+  workExperience.classList.add("work-experience-item");
 
-    workExperience.innerHTML = `
+  workExperience.innerHTML = `
         <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
             <div class="sm:col-span-2 flex justify-between items-center">
                 <h3 class="text-xl font-semibold text-gray-900">Work Experience</h3>
@@ -149,60 +157,62 @@ function addWorkExperience() {
         </div>
     `;
 
-    let workExperienceList = document.getElementById("work-experience-list");
-    workExperienceList.appendChild(workExperience);
+  let workExperienceList = document.getElementById("work-experience-list");
+  workExperienceList.appendChild(workExperience);
 
-    let roleInput = workExperience.querySelector(".role-title");
-    let companyInput = workExperience.querySelector(".company-name");
-    let startDateInput = workExperience.querySelector(".start-date");
-    let endDateInput = workExperience.querySelector(".end-date");
-    let responsibilityPlusBTN = workExperience.querySelector(".add-button");
-    let responsibilitiesList = workExperience.querySelector(".responsibilities-list");
+  let roleInput = workExperience.querySelector(".role-title");
+  let companyInput = workExperience.querySelector(".company-name");
+  let startDateInput = workExperience.querySelector(".start-date");
+  let endDateInput = workExperience.querySelector(".end-date");
+  let responsibilityPlusBTN = workExperience.querySelector(".add-button");
+  let responsibilitiesList = workExperience.querySelector(
+    ".responsibilities-list"
+  );
 
-    responsibilityPlusBTN.addEventListener('click', () => {
-        let responsibilityValue = workExperience.querySelector(".responsibilities").value;
+  responsibilityPlusBTN.addEventListener("click", () => {
+    let responsibilityValue =
+      workExperience.querySelector(".responsibilities").value;
 
-        if (responsibilityValue !== '') {
-            let listItem = document.createElement('li');
-            listItem.textContent = responsibilityValue;
-            responsibilitiesList.appendChild(listItem);
+    if (responsibilityValue !== "") {
+      let listItem = document.createElement("li");
+      listItem.textContent = responsibilityValue;
+      responsibilitiesList.appendChild(listItem);
 
-            workExperience.querySelector(".responsibilities").value = '';
-        }
+      workExperience.querySelector(".responsibilities").value = "";
+    }
+  });
+
+  let saveWorkExperienceBtn = workExperience.querySelector(".save-button");
+  saveWorkExperienceBtn.addEventListener("click", () => {
+    let workExperienceObj = {
+      roleTitle: roleInput.value,
+      companyName: companyInput.value,
+      startDate: startDateInput.value,
+      endDate: endDateInput.value,
+      responsibilities: [],
+    };
+
+    responsibilitiesList.querySelectorAll("li").forEach((responsibility) => {
+      workExperienceObj.responsibilities.push(responsibility.textContent);
     });
 
-    let saveWorkExperienceBtn = workExperience.querySelector(".save-button");
-    saveWorkExperienceBtn.addEventListener('click', () => {
-        let workExperienceObj = {
-            roleTitle: roleInput.value,
-            companyName: companyInput.value,
-            startDate: startDateInput.value,
-            endDate: endDateInput.value,
-            responsibilities: []
-        };
+    workExperiences.push(workExperienceObj);
 
-        responsibilitiesList.querySelectorAll('li').forEach(responsibility => {
-            workExperienceObj.responsibilities.push(responsibility.textContent);
-        });
+    console.log(workExperiences);
+  });
 
-        workExperiences.push(workExperienceObj);
-
-        console.log(workExperiences);
-    });
-
-    
-    let deleteButton = workExperience.querySelector(".delete-button");
-    deleteButton.addEventListener('click', () => {
-        workExperienceList.removeChild(workExperience);
-    });
+  let deleteButton = workExperience.querySelector(".delete-button");
+  deleteButton.addEventListener("click", () => {
+    workExperienceList.removeChild(workExperience);
+  });
 }
 
-function addEducation(){
-let educationList = document.getElementById("education-list");
-let educationItemContainer = document.createElement("div");
-educationItemContainer.classList.add("education-item");
+function addEducation() {
+  let educationList = document.getElementById("education-list");
+  let educationItemContainer = document.createElement("div");
+  educationItemContainer.classList.add("education-item");
 
-educationItemContainer.innerHTML = `
+  educationItemContainer.innerHTML = `
 <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
 
 
@@ -268,54 +278,60 @@ educationItemContainer.innerHTML = `
 
                     </div>
 
-`
+`;
 
-educationList.appendChild(educationItemContainer);
-
+  educationList.appendChild(educationItemContainer);
 }
 
+function addTechnicalSkill() {
+  let technicalSkillsInput = document.getElementById("technical-skills-input");
+  let technicalSkillsList = document.getElementById("technical-skills-list");
 
-function addTechnicalSkill(){
+  let technicalSkillValue = technicalSkillsInput.value;
 
-        let technicalSkillsInput = document.getElementById('technical-skills-input');
-        let technicalSkillsList = document.getElementById('technical-skills-list');
-        
-        let technicalSkillValue = technicalSkillsInput.value;
-        
-        // ADd the hard skill to the list below the field  live 
-        if (technicalSkillValue !== '') {
-            let technicalSkillItem = document.createElement('li');
-            technicalSkillItem.textContent = technicalSkillValue;
-            technicalSkillsList.appendChild(technicalSkillItem);
+  // ADd the hard skill to the list below the field  live
+  if (technicalSkillValue !== "") {
+    let technicalSkillItem = document.createElement("li");
+    technicalSkillItem.textContent = technicalSkillValue;
+    technicalSkillsList.appendChild(technicalSkillItem);
 
-            technicalSkillsInput.value = '';
-
-        }
+    technicalSkillsInput.value = "";
+  }
 }
 
-function addSoftSkill(){
+function addSoftSkill() {
+  let softSkillsInput = document.getElementById("soft-skills-input");
+  let softSkillsList = document.getElementById("soft-skills-list");
 
-    let softSkillsInput = document.getElementById('soft-skills-input');
-    let softSkillsList = document.getElementById('soft-skills-list');
-    
-    let softSkillValue = softSkillsInput.value;
-    
-    // ADd the soft skill to the list below the field  live 
-    if (softSkillValue !== '') {
-        let softSkillItem = document.createElement('li');
-        softSkillItem.textContent = softSkillValue;
-        softSkillsList.appendChild(softSkillItem);
+  let softSkillValue = softSkillsInput.value;
 
-        softSkillsInput.value = '';
+  // ADd the soft skill to the list below the field  live
+  if (softSkillValue !== "") {
+    let softSkillItem = document.createElement("li");
+    softSkillItem.textContent = softSkillValue;
+    softSkillsList.appendChild(softSkillItem);
 
-    }
+    softSkillsInput.value = "";
+  }
 }
 
-function addLanguage(){
-     let languagesList = document.getElementById('languages-list');
-     let languageItem = document.createElement('div');
-     languageItem.classList.add("languages-item","grid","grid-cols-1","gap-x-8","gap-y-6","sm:grid-cols-2","mt-4","border","border-gray-500","py-4","px-4");
-     languageItem.innerHTML = `
+function addLanguage() {
+  let languagesList = document.getElementById("languages-list");
+  let languageItem = document.createElement("div");
+  languageItem.classList.add(
+    "languages-item",
+    "grid",
+    "grid-cols-1",
+    "gap-x-8",
+    "gap-y-6",
+    "sm:grid-cols-2",
+    "mt-4",
+    "border",
+    "border-gray-500",
+    "py-4",
+    "px-4"
+  );
+  languageItem.innerHTML = `
      <div>
                                 <label for="language-input"
                                     class="block text-sm/6 font-semibold text-gray-900">Language</label>
@@ -347,17 +363,28 @@ function addLanguage(){
                                     </select>
                                 </div>
                             </div>
-    `
-    
-    languagesList.appendChild(languageItem);
+    `;
 
+  languagesList.appendChild(languageItem);
 }
 
-function addCertification(){
-    let certificationsList = document.getElementById('certifications-list');
-    let certificationItem = document.createElement("div");
-    certificationItem.classList.add ("certification-item","grid","grid-cols-1","gap-x-8","gap-y-6","sm:grid-cols-2","mt-4","border","border-gray-500","py-4","px-4");
-    certificationItem.innerHTML = `
+function addCertification() {
+  let certificationsList = document.getElementById("certifications-list");
+  let certificationItem = document.createElement("div");
+  certificationItem.classList.add(
+    "certification-item",
+    "grid",
+    "grid-cols-1",
+    "gap-x-8",
+    "gap-y-6",
+    "sm:grid-cols-2",
+    "mt-4",
+    "border",
+    "border-gray-500",
+    "py-4",
+    "px-4"
+  );
+  certificationItem.innerHTML = `
     <div>
                                 <label for="certificate-input"
                                     class="block text-sm/6 font-semibold text-gray-900">Certification</label>
@@ -398,55 +425,49 @@ function addCertification(){
                                 </div>
 
                             </div>
-    `
+    `;
 
-    certificationsList.appendChild(certificationItem);
+  certificationsList.appendChild(certificationItem);
 }
 
-
-
 // --------------- this function to show the resume with its information and give the ability to go back if any thing is wrong   ---------------
-doneFormBtn.addEventListener('click',()=>{
+doneFormBtn.addEventListener("click", () => {
+  // --------------- this one for the personal info section ---------------
+  document.getElementById("save-button-section").classList.remove("hidden");
 
-// --------------- this one for the personal info section ---------------
-document.getElementById('save-button-section').classList.remove("hidden");
+  personalInfo = [];
+  let persoanlObj = {};
+  let firstName = document.getElementById("first-name").value;
+  let lastName = document.getElementById("last-name").value;
+  let profileTitle = document.getElementById("role-title").value;
+  let phoneNumber = document.getElementById("phone-number").value;
+  let email = document.getElementById("email").value;
+  let profileSummary = document.getElementById("profile-summary").value;
 
-personalInfo = [];
-let persoanlObj = {};
-let firstName = document.getElementById("first-name").value;
-let lastName = document.getElementById("last-name").value;
-let profileTitle = document.getElementById("role-title").value;
-let phoneNumber = document.getElementById("phone-number").value;
-let email = document.getElementById("email").value;
-let profileSummary = document.getElementById("profile-summary").value;
+  persoanlObj.firstName = firstName;
+  persoanlObj.lastName = lastName;
+  persoanlObj.profileTitle = profileTitle;
+  persoanlObj.phoneNumber = phoneNumber;
+  persoanlObj.email = email;
+  persoanlObj.profileSummary = profileSummary;
 
+  personalInfo.push(persoanlObj);
 
-persoanlObj.firstName = firstName;
-persoanlObj.lastName = lastName;
-persoanlObj.profileTitle = profileTitle;
-persoanlObj.phoneNumber = phoneNumber;
-persoanlObj.email = email;
-persoanlObj.profileSummary = profileSummary;
+  console.log(personalInfo);
 
-personalInfo.push(persoanlObj);
+  // --------------- this one for the education section ---------------
 
-console.log(personalInfo)
+  education = [];
 
-// --------------- this one for the education section ---------------
+  let educationItems = document.querySelectorAll(".education-item");
 
-
-    
-    education = [];
-
-    let educationItems = document.querySelectorAll('.education-item');
-    
-    educationItems.forEach((edu)=>{
+  educationItems.forEach((edu) => {
     let obj = {};
-    let degree = edu.querySelector('.degree-type').value;
-    let major = edu.querySelector('.major').value;
-    let universityName = edu.querySelector('.university-name').value;
-    let startDate = edu.querySelector('.start-date').value;
-    let endDate = edu.querySelector('.end-date').value;
+    let degree = edu.querySelector(".degree-type").value;
+    let major = edu.querySelector(".major").value;
+    let universityName = edu.querySelector(".university-name").value;
+    let startDate = edu.querySelector(".start-date").value;
+    let endDate = edu.querySelector(".end-date").value;
 
     obj.degree = degree;
     obj.major = major;
@@ -455,40 +476,36 @@ console.log(personalInfo)
     obj.endDate = endDate;
 
     education.push(obj);
+  });
+  console.log(education);
 
-    
-})
-console.log(education);
-
-
-// --------------- this one for the technical skills section ---------------
-technicalSkills=[];
-let technicalSkillsUl =  document.querySelectorAll('#technical-skills-list li');
-technicalSkillsUl.forEach((skill)=>{
+  // --------------- this one for the technical skills section ---------------
+  technicalSkills = [];
+  let technicalSkillsUl = document.querySelectorAll(
+    "#technical-skills-list li"
+  );
+  technicalSkillsUl.forEach((skill) => {
     technicalSkills.push(skill.textContent);
-})
-console.log(technicalSkills);
+  });
+  console.log(technicalSkills);
 
-
-// --------------- this one for the soft skills section ---------------
-softSkills=[];
-let softSkillsUl =  document.querySelectorAll('#soft-skills-list li');
-softSkillsUl.forEach((skill)=>{
+  // --------------- this one for the soft skills section ---------------
+  softSkills = [];
+  let softSkillsUl = document.querySelectorAll("#soft-skills-list li");
+  softSkillsUl.forEach((skill) => {
     softSkills.push(skill.textContent);
-})
-console.log(softSkills);
+  });
+  console.log(softSkills);
 
+  // --------------- this one for the links section ---------------
+  links = [];
+  let linksList = document.querySelectorAll(".link-details");
 
-// --------------- this one for the links section ---------------
-links = [];
-let linksList = document.querySelectorAll('.link-details');
-
-linksList.forEach((link)=>{
-
+  linksList.forEach((link) => {
     let obj = {};
 
-    let label = link.querySelector('label').textContent;
-    let value = link.querySelector('input').value;
+    let label = link.querySelector("label").textContent;
+    let value = link.querySelector("input").value;
     // let linkedInLabel = link.querySelector('.linkedin-label').textContent;
     // let linkedInInput = link.querySelector('.linkedin-input').value;
     // // // let gitHubLabel = link.querySelector('.github-label').textContent;
@@ -499,8 +516,8 @@ linksList.forEach((link)=>{
     // // let twitterLabel = link.querySelector('.twitter-label').textContent;
     // // let twitterInput= link.querySelector('.twitter-input').value;
 
-     obj.label =  label;
-     obj.value = value;
+    obj.label = label;
+    obj.value = value;
     //  obj.linkedInLabel =  linkedInLabel;
     //  obj.linkedInInput = linkedInInput;
     // //  obj.gitHubLabel = gitHubLabel;
@@ -510,43 +527,43 @@ linksList.forEach((link)=>{
     // //  obj.twitterLabel = twitterLabel;
     // //  obj.twitterInput = twitterInput;
 
-     links.push(obj);
-     
-})
-console.log(links);
+    links.push(obj);
+  });
+  console.log(links);
 
+  // --------------- this one for the languages section ---------------
+  languages = [];
+  let languagesItems = document.querySelectorAll(".languages-item");
 
-// --------------- this one for the languages section ---------------
-languages = [];
-let languagesItems = document.querySelectorAll('.languages-item');
- 
-languagesItems.forEach((lngItm)=>{
+  languagesItems.forEach((lngItm) => {
     let obj = {};
 
-    let language = lngItm.querySelector('.language-input').value;
-    let languageLevel = lngItm.querySelector('.language-level').value;
-    if (language == "" && languageLevel==""){
-        return;
+    let language = lngItm.querySelector(".language-input").value;
+    let languageLevel = lngItm.querySelector(".language-level").value;
+    if (language == "" && languageLevel == "") {
+      return;
     }
     obj.language = language;
     obj.level = languageLevel;
 
-    languages.push(obj)
-})
-console.log(languages)
+    languages.push(obj);
+  });
+  console.log(languages);
 
-// --------------- this one for the certifications section ---------------
-certifications = [];
-let certificationItems = document.querySelectorAll('.certification-item');
+  // --------------- this one for the certifications section ---------------
+  certifications = [];
+  let certificationItems = document.querySelectorAll(".certification-item");
 
-certificationItems.forEach((crtf)=>{
+  certificationItems.forEach((crtf) => {
     obj = {};
-    let certification = crtf.querySelector('.certification-input').value;
-    let dateOfObtaining = crtf.querySelector('.date-of-obtaining').value;
-    let certificationLink = crtf.querySelector('.certification-link-input').value;
+    let certification = crtf.querySelector(".certification-input").value;
+    let dateOfObtaining = crtf.querySelector(".date-of-obtaining").value;
+    let certificationLink = crtf.querySelector(
+      ".certification-link-input"
+    ).value;
 
-    if(certification =="" && dateOfObtaining ==""){
-        return;
+    if (certification == "" && dateOfObtaining == "") {
+      return;
     }
 
     obj.certification = certification;
@@ -554,18 +571,22 @@ certificationItems.forEach((crtf)=>{
     obj.certificationLink = certificationLink;
 
     certifications.push(obj);
-})
-console.log(certifications);
+  });
+  console.log(certifications);
 
-// --------------- this one for the resume review section ---------------
-let cvContent = `
+  // --------------- this one for the resume review section ---------------
+  let cvContent = `
             <!-- Main Container -->
     <div class="max-w-6xl mx-auto my-8 bg-white border border-solid">
         <!-- Header Section with Gradient -->
         <div class="relative bg-gradient-to-r from-purple-900 to-indigo-800 p-12 text-white">
             <div class="max-w-4xl">
-                <h1 class="text-5xl font-bold mb-3">${personalInfo[0].firstName} ${personalInfo[0].lastName}</h1>
-                <p class="text-xl font-light mb-6">${personalInfo[0].profileTitle}</p>
+                <h1 class="text-5xl font-bold mb-3">${
+                  personalInfo[0].firstName
+                } ${personalInfo[0].lastName}</h1>
+                <p class="text-xl font-light mb-6">${
+                  personalInfo[0].profileTitle
+                }</p>
                 <div class="flex  flex-wrap gap-3 justify-start text-purple-200">
                     <div class="flex justify-start space-x-2">
                         <span>Email: </span>
@@ -575,12 +596,16 @@ let cvContent = `
                         <span>Phone: </span>
                         <span>${personalInfo[0].phoneNumber}</span>
                     </div>
-                    ${links.map(link => `
+                    ${links
+                      .map(
+                        (link) => `
                         <div class="flex items-start space-x-2">
                          <span>${link.label}: </span>
                         <span>${link.value} </span>
                     </div>
-                    `).join('')}
+                    `
+                      )
+                      .join("")}
                 </div>
             </div>
         </div>
@@ -599,7 +624,9 @@ let cvContent = `
                         </div>
                         <h2 class="text-2xl font-bold text-gray-800">PRROFILE SUMMARY</h2>
                     </div>
-                    <p class="text-gray-600 leading-relaxed pl-16">${personalInfo[0].profileSummary}</p>
+                    <p class="text-gray-600 leading-relaxed pl-16">${
+                      personalInfo[0].profileSummary
+                    }</p>
                 </section>
 
                 <!--WORK Experience -->
@@ -615,28 +642,40 @@ let cvContent = `
                    
                     
                     <div class="space-y-4 pl-16">
-                    ${workExperiences.map(experience =>`
+                    ${workExperiences.map(
+                      (experience) => `
                         
                         <div class="relative pb-8 border-l-2 border-purple-200 pl-8">
                             <div class="absolute -left-2 top-0 w-6 h-6 bg-purple-600 rounded-full"></div>
                             <div class="mb-4">
                                 <div class="flex justify-between items-center mb-2">
-                                    <h3 class="text-xl font-bold text-gray-800">${experience.roleTitle}</h3>
-                                    <span class="text-purple-600 font-semibold">${experience.startDate} - ${experience.endDate}</span>
+                                    <h3 class="text-xl font-bold text-gray-800">${
+                                      experience.roleTitle
+                                    }</h3>
+                                    <span class="text-purple-600 font-semibold">${
+                                      experience.startDate
+                                    } - ${experience.endDate}</span>
                                 </div>
-                                <p class="text-gray-600 mb-4">${experience.companyName}</p>
+                                <p class="text-gray-600 mb-4">${
+                                  experience.companyName
+                                }</p>
                                 <ul class="space-y-2 text-gray-600">
-                                ${experience.responsibilities.map(respo=>`
+                                ${experience.responsibilities
+                                  .map(
+                                    (respo) => `
                                 <li class="flex items-start">
                                 <span class="text-purple-600 mr-2">•</span>
                                 ${respo}</li>
-                                    `).join('')}
+                                    `
+                                  )
+                                  .join("")}
                                     
                                 </ul>
                             </div>
                         </div>
 
-                    `)}
+                    `
+                    )}
                        
 
                         
@@ -657,9 +696,13 @@ let cvContent = `
                         <h2 class="text-xl font-bold text-gray-800">HARD SKILLS</h2>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                    ${technicalSkills.map(skill=>`
+                    ${technicalSkills
+                      .map(
+                        (skill) => `
                         <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">${skill}</span>
-                        `).join('')}
+                        `
+                      )
+                      .join("")}
                     </div>
                 </section>
                 <!-- soft skills -->
@@ -673,9 +716,13 @@ let cvContent = `
                         <h2 class="text-xl font-bold text-gray-800">SOFT SKILLS</h2>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                    ${softSkills.map(skill=>`
+                    ${softSkills
+                      .map(
+                        (skill) => `
                         <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">${skill}</span>
-                        `).join('')}
+                        `
+                      )
+                      .join("")}
                     </div>
                 </section>
 
@@ -692,13 +739,17 @@ let cvContent = `
                         <h2 class="text-xl font-bold text-gray-800">EDUCATION</h2>
                     </div>
                     <div>
-                    ${education.map(educa=>`
+                    ${education
+                      .map(
+                        (educa) => `
                         
                         <h3 class="font-bold text-gray-800 mb-1">${educa.degree} ${educa.major}</h3>
                         <p class="text-gray-600  mb-1">${educa.universityName}</p>
                         <p class="text-purple-600 font-medium">de ${educa.startDate} - ${educa.endDate}</p>
                         
-                        `).join('')}
+                        `
+                      )
+                      .join("")}
                         
                     </div>
                 </section>
@@ -716,12 +767,16 @@ let cvContent = `
                 </div>
                 <div class="space-y-4">
 
-                ${languages.map(language => `
+                ${languages
+                  .map(
+                    (language) => `
                         <div class="flex justify-between mb-1 border-b-2 pb-1">
                             <span class="text-gray-700 font-medium">${language.language}</span>
                             <span class="text-purple-600">${language.level}</span>
                         </div>
-                        `).join('')}
+                        `
+                  )
+                  .join("")}
                 </div>
             </section>
 
@@ -736,7 +791,9 @@ let cvContent = `
                     <h2 class="text-xl font-bold text-gray-800">CERTIFICATIONS</h2>
                 </div>
                 <ul class="space-y-3">
-                    ${certifications.map(certif=>`
+                    ${certifications
+                      .map(
+                        (certif) => `
 
                         <li class="flex flex-col border-b-2 pb-1">
                         <h5 class="font-medium text-gray-800">${certif.certification}</h5>
@@ -744,7 +801,9 @@ let cvContent = `
                         <a class="text-violet-800 hover:underline" href="${certif.certificationLink}">Link To Certificate</a>
                     </li>
                         
-                        `).join('')}
+                        `
+                      )
+                      .join("")}
                     
                 </ul>
             </section>
@@ -754,49 +813,99 @@ let cvContent = `
 </div>
       `;
 
-      document.getElementById('cv-preview-section').innerHTML = cvContent;
-
-
-})
-
+  document.getElementById("cv-preview-section").innerHTML = cvContent;
+});
 
 // --------------- this function to save the resum as a pdf flie and also in the foramt of A4  ---------------
 
-function saveResumePdf(){
-            
-        const cvPreview = document.getElementById('cv-preview-section');
-        
-                html2canvas(cvPreview).then(canvas => {
-                    const imgData = canvas.toDataURL('image/png');
-                    const pdf = new jspdf.jsPDF({
-                        orientation: 'portrait',
-                        unit: 'px',
-                        format: 'a4'
-                    });
-        
-                    const imgProps = pdf.getImageProperties(imgData);
-                    const pdfWidth = pdf.internal.pageSize.getWidth();
-                    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-        
-                    let position = 0;
-                    const pageHeight = pdf.internal.pageSize.getHeight();
-        
-                    if (pdfHeight <= pageHeight) {
-                        // If content height is within a single page
-                        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-                    } else {
-                        // If content height exceeds a single page
-                        while (position < pdfHeight) {
-                            pdf.addImage(imgData, 'PNG', 0, -position, pdfWidth, pdfHeight);
-                            position += pageHeight;
-                            if (position < pdfHeight) {
-                                pdf.addPage();
-                            }
-                        }
-                    }
-        
-                    pdf.save('resume.pdf');
-                
-                });
+function saveResumePdf() {
+  const cvPreview = document.getElementById("cv-preview-section");
+
+  html2canvas(cvPreview).then((canvas) => {
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jspdf.jsPDF({
+      orientation: "portrait",
+      unit: "px",
+      format: "a4",
+    });
+
+    const imgProps = pdf.getImageProperties(imgData);
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+    let position = 0;
+    const pageHeight = pdf.internal.pageSize.getHeight();
+
+    if (pdfHeight <= pageHeight) {
+      // If content height is within a single page
+      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+    } else {
+      // If content height exceeds a single page
+      while (position < pdfHeight) {
+        pdf.addImage(imgData, "PNG", 0, -position, pdfWidth, pdfHeight);
+        position += pageHeight;
+        if (position < pdfHeight) {
+          pdf.addPage();
+        }
+      }
+    }
+
+    pdf.save("resume.pdf");
+  });
 }
 
+// --------------- this where we set up the form validation for each input in the form  ---------------
+
+document.addEventListener("DOMContentLoaded", () => {
+  let nameInput = document.getElementById("first-name");
+  let form = document.getElementById("resume-form");
+  let emailInput = document.getElementById("email");
+  let phoneInput = document.getElementById("phone");
+  let addressInput = document.getElementById("address");
+  let ageInput = document.getElementById("age");
+  let genderInput = document.getElementById("gender");
+
+  //- i decided to make the validation when the event blur occurs instead of submit
+  if (nameInput) {
+    nameInput.addEventListener("blur", () =>
+      formValidator.validateField("first-name", nameInput.value)
+    );
+  }
+  if (emailInput) {
+    emailInput.addEventListener("blur", () =>
+      formValidator.validateField("email", emailInput.value)
+    );
+  }
+  if (phoneInput) {
+    phoneInput.addEventListener("blur", () =>
+      formValidator.validateField("phone", phoneInput.value)
+    );
+  }
+  if (addressInput) {
+    addressInput.addEventListener("blur", () =>
+      formValidator.validateField("address", addressInput.value)
+    );
+  }
+  if (ageInput) {
+    ageInput.addEventListener("blur", () =>
+      formValidator.validateField("age", ageInput.value)
+    );
+  }
+  if (genderInput) {
+    genderInput.addEventListener("blur", () =>
+      formValidator.validateField("gender", genderInput.value)
+    );
+  }
+
+
+  if (form) {
+    form.addEventListener("submit", (event) => {
+      const isFormValid = formValidator.validateForm(form);
+      if (!isFormValid) {
+        event.preventDefault();
+      }
+    });
+  }
+
+
+});
