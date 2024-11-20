@@ -857,10 +857,13 @@ function saveResumePdf() {
 // --------------- this where we set up the form validation for each input in the form  ---------------
 
 document.addEventListener("DOMContentLoaded", () => {
-  let nameInput = document.getElementById("first-name");
   let form = document.getElementById("resume-form");
+  let nameInput = document.getElementById("first-name");
+  let lastNameInput = document.getElementById("last-name");
+  let roleTitleInput = document.getElementById("role-title");
   let emailInput = document.getElementById("email");
   let phoneInput = document.getElementById("phone");
+  let profileSummaryInput = document.getElementById("profile-summary");
   let addressInput = document.getElementById("address");
   let ageInput = document.getElementById("age");
   let genderInput = document.getElementById("gender");
@@ -871,6 +874,16 @@ document.addEventListener("DOMContentLoaded", () => {
       formValidator.validateField("first-name", nameInput.value)
     );
   }
+  if (lastNameInput) {
+    lastNameInput.addEventListener("blur", () =>
+      formValidator.validateField("last-name", lastNameInput.value)
+    );
+  }
+  if (roleTitleInput) {
+    roleTitleInput.addEventListener("blur", () =>
+      formValidator.validateField("role-title", roleTitleInput.value)
+    );
+  }
   if (emailInput) {
     emailInput.addEventListener("blur", () =>
       formValidator.validateField("email", emailInput.value)
@@ -879,6 +892,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (phoneInput) {
     phoneInput.addEventListener("blur", () =>
       formValidator.validateField("phone", phoneInput.value)
+    );
+  }
+  if (profileSummaryInput) {
+    profileSummaryInput.addEventListener("blur", () =>
+      formValidator.validateField("profile-summary", profileSummaryInput.value)
     );
   }
   if (addressInput) {

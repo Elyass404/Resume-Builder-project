@@ -53,7 +53,7 @@
                             <div class="mt-2.5">
                                 <input type="text" name="name" id="first-name" autocomplete="given-name"
                                     class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6 ">
-                                    <span id="first-nameError" class="error-message hidden">Name must be 2-30 characters long and contain only letters</span>
+                                    <span id="first-nameError" class="error-message text-red-700 text-xs hidden"></span>
                                 </div>
                         </div>
                         <div>
@@ -61,7 +61,7 @@
                             <div class="mt-2.5">
                                 <input type="text" name="last-name" id="last-name" autocomplete="family-name"
                                     class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
-                                    <span class="text-red-700 text-xs">your text is invalid</span>
+                                    <span id="last-nameError" class="error-message text-red-700 text-xs hidden">your text is invalid</span>
                             </div>
                         </div>
 
@@ -71,6 +71,7 @@
                             <div class="mt-2.5">
                                 <input type="text" name="role-title" id="role-title" autocomplete="family-name"
                                     class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                                <span id="role-titleError" class="error-message text-red-700 text-xs hidden"></span>
                             </div>
                         </div>
 
@@ -78,8 +79,9 @@
                             <label for="phone-number" class="block text-sm/6 font-semibold text-gray-900">Phone
                                 number</label>
                             <div class="relative mt-2.5">
-                                <input type="tel" name="phone-number" id="phone-number" autocomplete="tel"
+                                <input type="tel" name="phone" id="phone" autocomplete="tel"
                                     class="block w-full rounded-md border-0 px-3.5 py-2  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                                 <span id="phoneError" class="error-message text-red-700 text-xs hidden"></span>
                             </div>
                         </div>
 
@@ -88,6 +90,7 @@
                             <div class="mt-2.5">
                                 <input type="email" name="email" id="email" autocomplete="email"
                                     class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                                <span id="emailError" class="error-message text-red-700 text-xs hidden"></span>
                             </div>
                         </div>
 
@@ -97,6 +100,7 @@
                             <div class="mt-2.5">
                                 <textarea name="profile-summary" id="profile-summary" rows="4"
                                     class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"></textarea>
+                                    <span id="profile-summaryError" class="error-message text-red-700 text-xs hidden"></span>    
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,15 @@
 let validationRules = {
   'first-name': {
     regex: /^[a-zA-Z\s]{2,30}$/,
-    message: "Name must be 2-30 characters long and contain only letters",
+    message: "First name must be 2-30 characters long and contain only letters",
+  },
+  'last-name': {
+    regex: /^[a-zA-Z\s]{2,30}$/,
+    message: "Last Name must be 2-30 characters long and contain only letters",
+  },
+  'role-title': {
+    regex: /^[a-zA-Z0-9\s,.'-]{2,30}$/,
+    message: "Role title must be 2-30 characters long",
   },
   email: {
     regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -10,6 +18,10 @@ let validationRules = {
   phone: {
     regex: /^\d{10}$/,
     message: "Phone number must be exactly 10 digits",
+  },
+  'profile-summary': {
+    regex: /^[a-zA-Z0-9\s,.'-]{20,500}$/,
+    message: "Please enter a valid profile summary (20-500 characters)",
   },
   address: {
     regex: /^[a-zA-Z0-9\s,.'-]{5,100}$/,
