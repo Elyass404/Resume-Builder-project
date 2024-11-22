@@ -3,6 +3,7 @@ import formValidator from './formValidator.js';
 
 // --------------- Variables declaration section ---------------
 let sectionCounter = 1;
+let experienceWork = 0 ;
 let nextBtn = document.querySelectorAll(".next-btn");
 let previousBtn = document.querySelectorAll(".previous-btn");
 let addWorkExperienceBtn = document.getElementById("add-work-button");
@@ -103,6 +104,7 @@ function goPrvStep() {
 }
 
 function addWorkExperience() {
+  experienceWork++;
   let workExperience = document.createElement("div");
   workExperience.classList.add("work-experience-item");
 
@@ -116,14 +118,16 @@ function addWorkExperience() {
             <div class="sm:col-span-2">
                 <label for="role-title" class="block text-sm font-semibold text-gray-900">Role Title</label>
                 <div class="mt-2.5">
-                    <input type="text" name="role-title" class="role-title block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+                    <input id="experience-role-${experienceWork}" type="text" name="role-title" class="experience-role role-title block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+                    <span id="experience-role-${experienceWork}Error" class="experience-roleError error-message text-red-700 text-xs hidden"></span>
                 </div>
             </div>
 
             <div class="sm:col-span-2">
                 <label for="company-name" class="block text-sm font-semibold text-gray-900">Company Name</label>
                 <div class="mt-2.5">
-                    <input type="text" name="company-name" class="company-name block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+                    <input id ="experience-company-${experienceWork}" type="text" name="company-name" class="experience-company company-name block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+                    <span id="experience-company-${experienceWork}Error" class=" error-message text-red-700 text-xs hidden"></span>
                 </div>
             </div>
 
@@ -144,11 +148,12 @@ function addWorkExperience() {
             <div class="sm:col-span-2">
                 <label for="responsibilities" class="block text-sm font-semibold text-gray-900">Responsibilities and Actions</label>
                 <div class="mt-2.5 flex items-center">
-                    <input type="text" name="responsibilities" class="responsibilities block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm mr-2">
-                    <button type="button" class="add-button px-3 py-3 flex justify-center items-center text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-inset focus:ring-indigo-500 rounded-md">
+                    <input id="experience-responsibilities-${experienceWork}" type="text" name="responsibilities" class="responsibilities block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm mr-2">
+                    <button id="respo-plus-btn" type="button" class="add-button px-3 py-3 flex justify-center items-center text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-inset focus:ring-indigo-500 rounded-md">
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
+                <span id="experience-responsibilities-${experienceWork}Error" class="error-message text-red-700 text-xs hidden"></span>
                 <ul class="responsibilities-list border border-solid border-black mt-4 list-disc pl-6 text-gray-700"></ul>
             </div>
             <div class="sm:col-span-2 flex justify-end">
@@ -205,6 +210,56 @@ function addWorkExperience() {
   deleteButton.addEventListener("click", () => {
     workExperienceList.removeChild(workExperience);
   });
+
+  //--------------form validation for work experience section---------------------
+
+    let experienceRole = workExperience.querySelector(`#experience-role-${experienceWork}`);
+    let experienceCompany = workExperience.querySelector(`#experience-company-${experienceWork}`);
+    let experienceResponsibilities = workExperience.querySelector(`#experience-responsibilities-${experienceWork}`);
+
+    //- i decided to make the validation when the event kryup occurs instead of submit
+    if (experienceRole) {
+      experienceRole.addEventListener("keyup", () => {
+        formValidator.validateField("roleTitle",experienceRole.value, `experience-role-${experienceWork}`);
+         validateSectionInputs(workExperience);
+      });
+    }
+
+    if (experienceCompany) {
+      experienceCompany.addEventListener("keyup", () =>{
+        formValidator.validateField("text", experienceCompany.value, `experience-company-${experienceWork}`);
+        validateSectionInputs(workExperience);
+        
+    });
+    }
+
+    if (experienceResponsibilities) {
+      experienceResponsibilities.addEventListener("keyup", () =>{
+        formValidator.validateField("text", experienceResponsibilities.value, `experience-responsibilities-${experienceWork}`);
+        
+      }
+      );}
+// ----------------this function is made in order to disable the next button if the inputs are not validated -------------
+
+    function validateSectionInputs(workExperience){
+      let inputs = workExperience.querySelectorAll('.experience-role, .experience-company');
+      let allValid = true;
+      inputs.forEach((input) => { 
+        if (!input.classList.contains('ring-green-600')){ 
+          
+            allValid = false;} 
+          }); 
+
+        let secondNextButton = document.getElementById("nxt2");
+        if (allValid){ 
+          secondNextButton.removeAttribute("disabled"); 
+          secondNextButton.classList.add("text-white", "bg-indigo-600", "hover:bg-indigo-500");
+        secondNextButton.classList.remove("text-gray-600", "bg-gray-500");
+        }else{ 
+          secondNextButton.setAttribute("disabled", "true");
+          secondNextButton.classList.remove("text-white", "bg-indigo-600", "hover:bg-indigo-500");
+          secondNextButton.classList.add("text-gray-600", "bg-gray-500"); }
+    }
 }
 
 function addEducation() {
@@ -864,58 +919,44 @@ document.addEventListener("DOMContentLoaded", () => {
   let emailInput = document.getElementById("email");
   let phoneInput = document.getElementById("phone");
   let profileSummaryInput = document.getElementById("profile-summary");
-  let addressInput = document.getElementById("address");
-  let ageInput = document.getElementById("age");
-  let genderInput = document.getElementById("gender");
 
   //- i decided to make the validation when the event blur occurs instead of submit
   if (nameInput) {
-    nameInput.addEventListener("blur", () =>
-      formValidator.validateField("first-name", nameInput.value)
-    );
+    nameInput.addEventListener("keyup", () =>{
+    formValidator.validateField("name", nameInput.value, "first-name");
+    validateSectionInputs();
+  });
   }
   if (lastNameInput) {
-    lastNameInput.addEventListener("blur", () =>
-      formValidator.validateField("last-name", lastNameInput.value)
-    );
+    lastNameInput.addEventListener("keyup", () =>{
+      formValidator.validateField("name", lastNameInput.value, "last-name");
+      validateSectionInputs();
+    });
   }
   if (roleTitleInput) {
-    roleTitleInput.addEventListener("blur", () =>
-      formValidator.validateField("role-title", roleTitleInput.value)
-    );
+    roleTitleInput.addEventListener("keyup", () =>{
+      formValidator.validateField("roleTitle", roleTitleInput.value, "role-title");
+      validateSectionInputs();
+    });
   }
   if (emailInput) {
-    emailInput.addEventListener("blur", () =>
-      formValidator.validateField("email", emailInput.value)
-    );
+    emailInput.addEventListener("keyup", () =>{
+      formValidator.validateField("email", emailInput.value, "email");
+      validateSectionInputs();
+    });
   }
   if (phoneInput) {
-    phoneInput.addEventListener("blur", () =>
-      formValidator.validateField("phone", phoneInput.value)
-    );
+    phoneInput.addEventListener("keyup", () =>{
+      formValidator.validateField("phone", phoneInput.value, "phone");
+      validateSectionInputs();
+    });
   }
   if (profileSummaryInput) {
-    profileSummaryInput.addEventListener("blur", () =>
-      formValidator.validateField("profile-summary", profileSummaryInput.value)
-    );
+    profileSummaryInput.addEventListener("keyup", () =>{
+      formValidator.validateField("profileSummary", profileSummaryInput.value, "profile-summary");
+      validateSectionInputs();
+    });
   }
-  if (addressInput) {
-    addressInput.addEventListener("blur", () =>
-      formValidator.validateField("address", addressInput.value)
-    );
-  }
-  if (ageInput) {
-    ageInput.addEventListener("blur", () =>
-      formValidator.validateField("age", ageInput.value)
-    );
-  }
-  if (genderInput) {
-    genderInput.addEventListener("blur", () =>
-      formValidator.validateField("gender", genderInput.value)
-    );
-  }
-
-
   if (form) {
     form.addEventListener("submit", (event) => {
       const isFormValid = formValidator.validateForm(form);
@@ -923,6 +964,27 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
       }
     });
+  }
+
+  function validateSectionInputs(){
+    let inputs = document.querySelectorAll('#first-name, #last-name, #role-title, #email, #phone, #profile-summary');
+    let allValid = true;
+    inputs.forEach((input) => { 
+      if (!input.classList.contains('ring-green-600')){ 
+        
+          allValid = false;} 
+        }); 
+
+      let firstNextButton = document.getElementById("nxt1");
+      if (allValid){ 
+        firstNextButton.removeAttribute("disabled"); 
+        firstNextButton.classList.add("text-white", "bg-indigo-600", "hover:bg-indigo-500");
+        firstNextButton.classList.remove("text-gray-600", "bg-gray-500");
+      }else{ 
+        firstNextButton.setAttribute("disabled", "true"); 
+        firstNextButton.classList.remove("text-white", "bg-indigo-600", "hover:bg-indigo-500");
+        firstNextButton.classList.add("text-gray-600", "bg-gray-500");
+      }
   }
 
 

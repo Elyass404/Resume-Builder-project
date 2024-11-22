@@ -1,13 +1,9 @@
 let validationRules = {
-  'first-name': {
+  name: {
     regex: /^[a-zA-Z\s]{2,30}$/,
-    message: "First name must be 2-30 characters long and contain only letters",
+    message: "This field must contain 2-30 characters long and contain only letters",
   },
-  'last-name': {
-    regex: /^[a-zA-Z\s]{2,30}$/,
-    message: "Last Name must be 2-30 characters long and contain only letters",
-  },
-  'role-title': {
+  roleTitle: {
     regex: /^[a-zA-Z0-9\s,.'-]{2,30}$/,
     message: "Role title must be 2-30 characters long",
   },
@@ -19,9 +15,17 @@ let validationRules = {
     regex: /^\d{10}$/,
     message: "Phone number must be exactly 10 digits",
   },
-  'profile-summary': {
+  profileSummary: {
+    regex: /^[a-zA-Z0-9\s,.'-]{80,700}$/,
+    message: "Profile summary should contain (80-700 characters)",
+  },
+  text: {
+    regex: /^[a-zA-Z0-9\s,.'-]{2,500}$/,
+    message: "This fiels must contain (2-500 characters)",
+  },
+  longText: {
     regex: /^[a-zA-Z0-9\s,.'-]{20,500}$/,
-    message: "Please enter a valid profile summary (20-500 characters)",
+    message: "This fiels must contain (20-500 characters)",
   },
   address: {
     regex: /^[a-zA-Z0-9\s,.'-]{5,100}$/,
@@ -37,9 +41,10 @@ let validationRules = {
   },
 };
 
-function toggleError(field, show, message = "") {
-  let errorDisplay = document.getElementById(`${field}Error`);
-  let inputField = document.getElementById(field);
+function toggleError(item, show, message = "") {
+  let workExperience = document.getElementById("")
+  let errorDisplay = document.getElementById(`${item}Error`);
+  let inputField = document.getElementById(item);
 
   if (show) {
     errorDisplay.textContent = message;
@@ -53,13 +58,14 @@ function toggleError(field, show, message = "") {
   }
 }
 
-function validateField(field, value) {
-  let rule = validationRules[field];
+function validateField(regexrule, value, item) {
+  let rule = validationRules[regexrule];
   if (rule && !rule.regex.test(value)) {
-    toggleError(field, true, rule.message);
+    toggleError(item, true, rule.message);
     return false;
   } else {
-    toggleError(field, false);
+    toggleError(item, false);
+    console.log("true");
     return true;
   }
 }
